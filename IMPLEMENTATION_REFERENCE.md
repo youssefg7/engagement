@@ -477,6 +477,8 @@ Completion condition: a guest can submit name, attendance, and optional message 
 
 ### Task 10 — Configure GitHub Pages
 
+Status: **Complete (2026-08-30).** The workflow in [`.github/workflows/pages.yml`](.github/workflows/pages.yml) deploys the static site on every push to `main`; GitHub Pages uses the workflow source with HTTPS enforced, and the English and Arabic URLs were verified after the first successful deployment.
+
 - Add the Pages workflow and `.nojekyll`.
 - Create/configure the GitHub repository.
 - Enable GitHub Actions as the Pages source.
