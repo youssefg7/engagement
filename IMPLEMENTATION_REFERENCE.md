@@ -214,6 +214,10 @@ engagement/
 │   │   └── site.js
 │   ├── fonts/                  # only if fonts are self-hosted later
 │   └── images/
+│       ├── README.md
+│       ├── manifest.json
+│       ├── elements.csv
+│       ├── shared/
 │       ├── opening/
 │       ├── invitation/
 │       ├── celebration/
@@ -223,6 +227,8 @@ engagement/
 │       ├── reception-car/
 │       ├── dress-code/
 │       └── rsvp/
+├── scripts/
+│   └── extract-assets.mjs
 ├── .github/
 │   └── workflows/
 │       └── pages.yml
@@ -404,6 +410,8 @@ Status: **Complete (2026-08-30).** Git uses `main`, the public repository is [`y
 Completion condition: both routes load locally using relative assets.
 
 ### Task 3 — Extract and classify assets
+
+Status: **Complete (2026-08-30).** The reproducible extractor in [`scripts/extract-assets.mjs`](scripts/extract-assets.mjs) decoded all 614 references into 288 unique physical files, removed 326 duplicate file copies, grouped scene-specific and shared assets, and recorded every source element in [`assets/images/manifest.json`](assets/images/manifest.json) and [`assets/images/elements.csv`](assets/images/elements.csv).
 
 - Extract embedded data-URI visuals into named asset files.
 - Group files by scene.
