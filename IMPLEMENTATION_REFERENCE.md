@@ -433,6 +433,23 @@ Completion condition: all essential information is present as real DOM text.
 
 ### Task 5 — Convert image text while preserving typography
 
+Status: **Complete (2026-08-31).** Every meaningful text role now uses live, selectable DOM text with a dedicated font treatment. The final mapping keeps the source’s distinct formal scripts, scene calligraphy, invitation serif, informational sans, condensed countdown, RSVP monogram, and personal-note hand. Automated comparison and image-disabled captures are stored in [`output/playwright/task-5/`](output/playwright/task-5/). Arabic font selection remains part of Task 8 because the current `/ar/` copy is deliberately marked as English.
+
+| Live role | Implemented family | Source relationship |
+|---|---|---|
+| Opening strapline | `Cormorant Garamond` 600 | Preserves the tracked uppercase serif and recreates the source arc as live SVG text |
+| Opening names and signature | `Great Vibes` | Closest available web substitution for the source’s formal, restrained name script |
+| Opening ampersand | `Ballet` | Keeps the pink accent distinct from the hero-name script |
+| Closed-envelope message | `Mrs Saint Delafield` | Loose handwritten substitution reserved for the closed-envelope state |
+| Open-scene orange names | `Qwigley` | Connected, informal orange display distinct from both hero and card lettering |
+| Invitation-card names and date | `Ballet` | Retains the official source web font |
+| Invitation formal copy | `Cormorant Garamond` 500 | Retains the known source family with a readable minimum size |
+| Main scene headings | `Italianno` | Closest tested web substitution for the source’s thin, sweeping calligraphy |
+| RSVP heading | `Italiana` | Restrained high-contrast substitute for the separate geometric RSVP lettering |
+| Informational copy, calendar, labels, and button | `Montserrat` 400–800 | Web-safe substitute for the source’s compact Arial-like uppercase sans role |
+| Countdown numerals | `Anton` | Portable condensed-display substitute for the source’s `Impact`/`Arial Narrow` stack |
+| RSVP personal note | `Caveat` 400 | Friendly handwritten role kept separate from large display scripts |
+
 - Replace every meaningful text fragment with live text.
 - Preserve each original font role and typographic treatment.
 - Maintain intentional differences between couple names, calligraphic headings, formal invitation serif, informational sans-serif, countdown numerals, labels, and personal-note handwriting.
