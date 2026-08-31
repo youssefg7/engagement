@@ -225,12 +225,32 @@ a { color: inherit; }
 }
 
 .opening__boat { inset: auto 7% 7% auto; width: min(26vw, 12rem); }
-.opening__bird { inset: 17% 8% auto auto; width: min(21vw, 8rem); }
+
+.opening__bird {
+  z-index: 3;
+  aspect-ratio: 1;
+  transform-origin: center;
+}
+
+.opening__bird img { width: 100%; height: 100%; object-fit: contain; }
+.opening__bird--1 { left: 7.37%; top: 28.27%; width: 17.13%; --bird-delay: 0.1s; --bird-x: 10px; --bird-y: -6px; --bird-cx: -4px; --bird-cy: 7px; --bird-duration: 3.8s; }
+.opening__bird--2 { left: 63.62%; top: 6%; width: 12.99%; --bird-delay: 0.18s; --bird-x: -10px; --bird-y: 4px; --bird-cx: 5px; --bird-cy: 8px; --bird-duration: 3.6s; }
+.opening__bird--3 { left: 76.52%; top: 35.37%; width: 17.96%; --bird-delay: 0.26s; --bird-x: -9px; --bird-y: -2px; --bird-cx: 6px; --bird-cy: 7px; --bird-duration: 3.9s; }
+.opening__bird--4 { left: 15.12%; top: 53.72%; width: 11.33%; --bird-delay: 0.34s; --bird-x: 9px; --bird-y: 6px; --bird-cx: -5px; --bird-cy: -5px; --bird-duration: 3.7s; }
+.opening__bird--5 { left: 20.04%; top: 13.77%; width: 11.33%; --bird-delay: 0.42s; --bird-x: 8px; --bird-y: -7px; --bird-cx: -3px; --bird-cy: 8px; --bird-duration: 3.5s; }
+.opening__bird--6 { left: 74.95%; top: 64.35%; width: 12.16%; --bird-delay: 0.5s; --bird-x: -8px; --bird-y: 6px; --bird-cx: 4px; --bird-cy: -6px; --bird-duration: 3.8s; }
+.opening__bird--1 img { transform: scaleX(-1) rotate(14deg); }
+.opening__bird--2 img { transform: rotate(-18deg); }
+.opening__bird--3 img { transform: rotate(-10deg); }
+.opening__bird--4 img { transform: scaleX(-1) rotate(8deg); }
+.opening__bird--5 img { transform: scaleX(-1) rotate(18deg); }
+.opening__bird--6 img { transform: rotate(-16deg); }
 .opening__garland { inset: -1rem 50% auto auto; width: min(96vw, 54rem); transform: translateX(50%); }
 
 /* Invitation */
 .invitation { background: var(--cream); }
 .invitation__stage { min-height: clamp(35rem, 115vw, 49rem); }
+.invitation__closed-paper { inset: 31% 2% auto; z-index: 7; width: 96%; opacity: 0; }
 .invitation__envelope-back { inset: 24% 4% auto; width: 92%; }
 
 .invitation__orange-title {
@@ -301,12 +321,12 @@ a { color: inherit; }
   line-height: 0.85;
 }
 .invitation__envelope-front { inset: auto 2% 0; z-index: 3; width: 96%; }
-.invitation__seal { inset: auto 39% 10%; z-index: 4; width: 22%; }
+.invitation__seal { inset: 57% auto auto 39%; z-index: 9; width: 22%; opacity: 0; }
 
 .invitation__closed-label {
   position: absolute;
-  inset: auto 0 1.1rem;
-  z-index: 5;
+  inset: 44% 0 auto;
+  z-index: 8;
   margin: 0;
   color: var(--ink);
   font-family: var(--hand-script);
@@ -525,6 +545,223 @@ a { color: inherit; }
   line-height: 0.95;
   text-transform: none;
 }
+
+/* Motion is opt-in so the full invitation remains visible without JavaScript. */
+.motion-ready .scene:not(.play) > .floral,
+.motion-ready .scene:not(.play) [data-motion="opening-copy"],
+.motion-ready .scene:not(.play) [data-motion="scene-copy"],
+.motion-ready .scene:not(.play) [data-motion="scene-art"],
+.motion-ready .scene:not(.play) [data-motion="invitation-photo"],
+.motion-ready .scene:not(.play) [data-motion="rsvp-card"],
+.motion-ready .date-scene:not(.play) .calendar,
+.motion-ready .opening:not(.play) .opening__garland,
+.motion-ready .opening:not(.play) .opening__oval,
+.motion-ready .opening:not(.play) .opening__nile,
+.motion-ready .opening:not(.play) .opening__boat,
+.motion-ready .opening:not(.play) .opening__bird,
+.motion-ready .invitation:not(.play) [data-motion="envelope"] {
+  opacity: 0;
+}
+
+.motion-ready .scene.play > .floral {
+  animation: motion-floral-in 0.72s cubic-bezier(0.2, 0.82, 0.2, 1) 0.04s both;
+}
+
+.floral--top-left { --motion-x: -1.5rem; --motion-y: -1.25rem; }
+.floral--top-right { --motion-x: 1.5rem; --motion-y: -1.25rem; }
+.floral--bottom-left { --motion-x: -1.5rem; --motion-y: 1.25rem; }
+.floral--bottom-right { --motion-x: 1.5rem; --motion-y: 1.25rem; }
+
+.motion-ready .scene.play [data-motion="scene-copy"] {
+  animation: motion-from-bottom 0.74s cubic-bezier(0.2, 0.82, 0.2, 1) 0.08s both;
+}
+
+.motion-ready .scene.play [data-motion="scene-art"] {
+  animation: motion-scale-in 0.8s cubic-bezier(0.2, 0.82, 0.2, 1) 0.18s both;
+}
+
+.motion-ready .celebration.play [data-motion="scene-copy"],
+.motion-ready .boat-scene.play [data-motion="scene-copy"] {
+  animation-name: motion-from-right;
+}
+
+.motion-ready .celebration.play [data-motion="scene-art"],
+.motion-ready .boat-scene.play [data-motion="scene-art"] {
+  animation-name: motion-from-left;
+}
+
+.motion-ready .ceremony-scene.play [data-motion="scene-copy"],
+.motion-ready .car-scene.play [data-motion="scene-copy"] {
+  animation-name: motion-from-left;
+}
+
+.motion-ready .ceremony-scene.play [data-motion="scene-art"],
+.motion-ready .car-scene.play [data-motion="scene-art"] {
+  animation-name: motion-from-right;
+}
+
+.motion-ready .date-scene.play [data-motion="scene-copy"] {
+  animation-name: motion-from-left;
+}
+
+.motion-ready .date-scene.play .calendar {
+  animation: motion-from-right 0.78s cubic-bezier(0.2, 0.82, 0.2, 1) 0.16s both;
+}
+
+.motion-ready .dress-code.play [data-motion="scene-copy"] { animation-name: motion-from-top; }
+.motion-ready .dress-code.play [data-motion="scene-art"] { animation-name: motion-from-bottom; }
+
+.motion-ready .rsvp.play [data-motion="rsvp-card"] {
+  animation: motion-card-in 0.86s cubic-bezier(0.16, 0.9, 0.22, 1) 0.1s both;
+}
+
+/* Opening choreography retains the source's stagger, long boat crossing, and bird orbits. */
+.motion-ready .opening.play .opening__garland { animation: motion-from-top 0.72s cubic-bezier(0.2, 0.82, 0.2, 1) both; }
+.motion-ready .opening.play > .floral { animation-delay: 0.1s; }
+.motion-ready .opening.play .opening__oval { animation: motion-pop 0.82s cubic-bezier(0.2, 0.82, 0.2, 1) 0.18s both; }
+.motion-ready .opening.play [data-motion="opening-copy"] { animation: motion-hero-rise 0.9s cubic-bezier(0.16, 0.9, 0.22, 1) 0.32s both; }
+.motion-ready .opening.play .opening__nile { animation: motion-from-bottom 0.86s cubic-bezier(0.2, 0.82, 0.2, 1) 0.72s both; }
+.motion-ready .opening.play .opening__boat { animation: opening-boat-cross 5.4s cubic-bezier(0.28, 0.05, 0.16, 1) 1.04s forwards; }
+
+.motion-ready .opening.play .opening__bird {
+  animation:
+    opening-bird-enter 0.58s cubic-bezier(0.2, 0.82, 0.2, 1) var(--bird-delay) both,
+    opening-bird-orbit var(--bird-duration) ease-in-out calc(var(--bird-delay) + 0.58s) infinite;
+}
+
+/* The closed envelope holds for 1.42s before the original open-state sequence begins. */
+.motion-ready .invitation.play [data-motion="envelope"] { opacity: 1; }
+
+.motion-ready .invitation.play .invitation__closed-paper {
+  animation:
+    invitation-closed-in 0.15s ease-out both,
+    invitation-paper-open 0.34s cubic-bezier(0.28, 0.05, 0.18, 1) 1.42s forwards;
+}
+
+.motion-ready .invitation.play .invitation__closed-label {
+  animation:
+    invitation-closed-in 0.15s ease-out both,
+    invitation-label-open 0.26s ease-in 1.42s forwards;
+}
+
+.motion-ready .invitation.play .invitation__seal {
+  animation:
+    invitation-seal-in 0.15s cubic-bezier(0.2, 0.82, 0.2, 1) 0.02s both,
+    invitation-seal-out 0.24s ease-in 1.76s forwards;
+}
+
+.motion-ready .invitation.play .invitation__envelope-back {
+  animation: invitation-open-anchor 0.38s cubic-bezier(0.18, 0.84, 0.22, 1) 1.6s both;
+}
+
+.motion-ready .invitation.play .invitation__envelope-front {
+  animation: invitation-front-in 0.24s ease-out 1.73s both;
+}
+
+.motion-ready .invitation.play [data-motion="invitation-photo"] {
+  animation: invitation-photos-rise 0.33s cubic-bezier(0.16, 0.9, 0.22, 1) 1.77s both;
+}
+
+.motion-ready .invitation.play .invitation__card {
+  animation: invitation-card-rise 0.39s cubic-bezier(0.16, 0.9, 0.22, 1) 1.83s both;
+}
+
+.motion-ready .invitation.play .invitation__orange-title {
+  animation: invitation-title-in 0.45s ease-out 1.92s both;
+}
+
+@keyframes motion-floral-in {
+  from { opacity: 0; translate: var(--motion-x) var(--motion-y); }
+}
+
+@keyframes motion-from-left { from { opacity: 0; translate: -1.5rem 0; } }
+@keyframes motion-from-right { from { opacity: 0; translate: 1.5rem 0; } }
+@keyframes motion-from-top { from { opacity: 0; translate: 0 -1.4rem; } }
+@keyframes motion-from-bottom { from { opacity: 0; translate: 0 1.75rem; } }
+@keyframes motion-scale-in { from { opacity: 0; scale: 0.93; } }
+
+@keyframes motion-pop {
+  0% { opacity: 0; scale: 0.72; }
+  70% { opacity: 1; scale: 1.05; }
+}
+
+@keyframes motion-hero-rise {
+  from { opacity: 0; translate: 0 2.9rem; scale: 0.96; }
+}
+
+@keyframes motion-card-in {
+  0% { opacity: 0; translate: 0 2rem; scale: 0.96; }
+  72% { opacity: 1; translate: 0 -0.2rem; scale: 1.01; }
+}
+
+@keyframes opening-boat-cross {
+  0% { opacity: 0; transform: translate(45%, 20%) rotate(2deg); }
+  10% { opacity: 1; }
+  28% { opacity: 1; transform: translate(-12%, -1%) rotate(0.2deg); }
+  62% { opacity: 1; transform: translate(-112%, 1%) rotate(-0.5deg); }
+  100% { opacity: 1; transform: translate(-205%, 0) rotate(0); }
+}
+
+@keyframes opening-bird-enter {
+  0% { opacity: 0; transform: translateY(12px) scale(0.88); }
+  70% { opacity: 1; transform: translateY(-1px) scale(1.025); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes opening-bird-orbit {
+  0% { transform: translate3d(0, -1px, 0) scale(1); }
+  22% { transform: translate3d(calc(var(--bird-x) * 0.45), calc(var(--bird-y) * 0.45), 0) scale(1.015); }
+  50% { transform: translate3d(var(--bird-x), var(--bird-y), 0) scale(1.03); }
+  78% { transform: translate3d(var(--bird-cx), var(--bird-cy), 0) scale(0.995); }
+  100% { transform: translate3d(0, -1px, 0) scale(1); }
+}
+
+@keyframes invitation-closed-in {
+  from { opacity: 0; translate: 0 3px; scale: 0.992; }
+  to { opacity: 1; }
+}
+
+@keyframes invitation-paper-open {
+  0% { opacity: 1; translate: 0 0; scale: 1; }
+  45% { opacity: 0.9; translate: 0 4%; scale: 0.985; }
+  100% { opacity: 0; translate: 0 14%; scale: 0.91; }
+}
+
+@keyframes invitation-label-open {
+  from { opacity: 1; }
+  to { opacity: 0; translate: 0 7%; scale: 0.95; }
+}
+
+@keyframes invitation-seal-in {
+  from { opacity: 0; scale: 0.94; }
+  to { opacity: 1; scale: 1; }
+}
+
+@keyframes invitation-seal-out {
+  from { opacity: 1; scale: 1; }
+  to { opacity: 0; scale: 0.97; }
+}
+
+@keyframes invitation-open-anchor {
+  from { opacity: 0; translate: 0 -4%; scale: 0.92; }
+  to { opacity: 1; }
+}
+
+@keyframes invitation-front-in { from { opacity: 0; } }
+
+@keyframes invitation-photos-rise {
+  from { opacity: 0; translate: 0 21px; scale: 0.965; }
+}
+
+@keyframes invitation-card-rise {
+  0% { opacity: 0; translate: -20px 18px; rotate: -8deg; scale: 0.945; }
+  65% { opacity: 0.92; }
+}
+
+@keyframes invitation-title-in {
+  from { opacity: 0; translate: 0 6px; }
+}
+
 :focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
 
 .visually-hidden {
@@ -684,4 +921,9 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .motion-ready *, .motion-ready *::before, .motion-ready *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+  }
 }

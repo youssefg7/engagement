@@ -481,6 +481,17 @@ Completion condition: no horizontal overflow, clipped text, unreadably small cop
 
 ### Task 7 — Preserve and consolidate animation behavior
 
+Status: **Complete (2026-09-01).** The source motion contract now lives in the shared stylesheet and script. JavaScript opts the page into motion, observes each scene with the source `0.18` threshold and `8% 0 -8%` root margin, adds `play` once, and then unobserves that scene. Without JavaScript—or when reduced motion is requested—the invitation remains fully visible in its stable open state.
+
+- The opening restores six positioned hummingbirds while reusing one deduplicated GIF file. Their source delays (`0.10s`–`0.50s`), `0.58s` entrances, individual `3.5s`–`3.9s` infinite orbits, and inward-facing orientations are preserved.
+- The sailboat retains its `5.4s` crossing, `1.04s` delay, source easing, and four-point path across the Nile artwork.
+- The invitation restores the closed-envelope paper and live handwritten label, holds the closed state for `1.42s`, and then follows the preserved paper, label, seal, open-envelope, photo, card, and orange-title timing contract through the settled open state.
+- Semantic copy and art groups use restrained directional entrances matching their placement: opposing left/right entrances for paired spreads, top/bottom entrances for dress code, and a dedicated RSVP paper entrance.
+- Responsive positioning remains in layout rules. Motion uses existing `data-motion` hooks and leaf artwork, with individual translate/scale/rotate properties for grouped entrances so it does not replace responsive geometry.
+- Reduced-motion emulation reports no motion opt-in class, no boat animation, visible birds and live content, a hidden closed-paper overlay, and the stable open invitation card.
+
+Automated captures are stored in [`output/playwright/task-7/`](output/playwright/task-7/): opening played, invitation closed at `300ms`, invitation open at `2500ms`, and the reduced-motion opening. Browser verification also confirmed play-once persistence, correct computed animation names/durations/delays, zero console errors, and no horizontal overflow or clipped live copy at 320 × 568, 844 × 390, and 1366 × 768 on the shared English/Arabic implementation.
+
 - Move current active motion into the shared script and stylesheet.
 - Preserve IntersectionObserver play-once behavior.
 - Preserve birds, boat, envelope, directional entrances, delays, and reduced motion.

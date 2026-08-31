@@ -1,6 +1,43 @@
 (() => {
   document.documentElement.dataset.js = "enabled";
 
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const syncMotionPreference = () => {
+    document.documentElement.classList.toggle("motion-ready", !motionPreference.matches);
+  };
+
+  syncMotionPreference();
+  motionPreference.addEventListener?.("change", syncMotionPreference);
+
+  const scenes = [...document.querySelectorAll("[data-scene]")];
+  const playScene = (scene) => scene.classList.add("play");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          playScene(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: "8% 0px -8% 0px" },
+    );
+
+    scenes.forEach((scene) => observer.observe(scene));
+  } else {
+    scenes.forEach(playScene);
+  }
+
+  window.requestAnimationFrame(() => {
+    if (scenes[0]) {
+      playScene(scenes[0]);
+    }
+  });
+
   const countdown = document.querySelector("[data-countdown]");
 
   if (!countdown) {
