@@ -423,6 +423,8 @@ Completion condition: the site no longer depends on hundreds of anonymous embedd
 
 ### Task 4 — Rebuild the semantic scene skeleton
 
+Status: **Complete (2026-08-30).** Both routes now share the same nine-scene semantic structure in the original order. Essential invitation copy, calendar/countdown, venue details, map embeds, dress-code labels, and RSVP field labels are live DOM content. Automated viewport captures are stored in [`output/playwright/task-4/`](output/playwright/task-4/). The Arabic route deliberately marks the temporary English copy as `lang="en"` until the approved translation and RTL treatment are added in Task 8.
+
 - Recreate all nine sections using art stages and live-copy layers.
 - Preserve the original scene order.
 - Add semantic headings, paragraphs, dates, addresses, map controls, and form labels.
