@@ -1,6 +1,6 @@
 # Engagement Invitation Website — Implementation Reference
 
-Last updated: 2026-08-30
+Last updated: 2026-09-01
 
 This document is the durable reference for the engagement invitation website implementation. Use it to keep the visual design, responsive behavior, bilingual routes, RSVP flow, animation behavior, and deployment setup consistent across separate implementation steps.
 
@@ -459,6 +459,18 @@ Status: **Complete (2026-08-31).** Every meaningful text role now uses live, sel
 Completion condition: disabling images leaves all essential content readable, while the rendered page still reflects the original typographic identity.
 
 ### Task 6 — Implement responsive layouts
+
+Status: **Complete (2026-09-01).** The rebuilt site now uses content-driven scene heights and four responsive layout modes: portrait-first mobile, compact short landscape, paired tablet spreads, and constrained desktop/wide-desktop spreads. The nine-scene order and all existing `data-motion` hooks remain unchanged. Final automated captures are stored in [`output/playwright/task-6/`](output/playwright/task-6/).
+
+| Layout mode | CSS condition | Implemented treatment |
+|---|---|---|
+| Mobile portrait | Base styles from 320 px | Stacked copy and art with full-width floral framing and content-driven height |
+| Short landscape | 640 px and wider, landscape, up to 544 px tall | Compact horizontal spreads, reduced stage gaps, landscape-safe invitation card, and two-column date/dress-code content |
+| Tablet | 704 px and wider | Alternating copy/art editorial spreads, paired date and dress-code groups, and a two-column RSVP paper |
+| Laptop/desktop | 1024 px and wider | Near-viewport-height scenes with bounded art, map, dress-code, and RSVP dimensions |
+| Wide desktop | 1440 px and wider | Wider bounded content canvas without stretching artwork beyond its useful scale |
+
+Verification covered 320 × 568, 390 × 844, 667 × 375, 844 × 390, 768 × 1024, 1366 × 768, and 1920 × 1080. Every target reported a document width equal to its viewport, no clipped visible headings/copy/forms, and no browser console errors. Both `/` and `/ar/` retain nine scenes; the Arabic route remains correctly declared as RTL while its temporary English inner copy stays intentionally marked for Task 8.
 
 - Add portrait, landscape, tablet, and desktop arrangements.
 - Allow text to determine section height.
