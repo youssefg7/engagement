@@ -45,6 +45,11 @@
   }
 
   const target = new Date(countdown.dataset.target).getTime();
+  const language = document.body.dataset.language === "ar" ? "ar" : "en";
+  const numberFormatter = new Intl.NumberFormat(
+    language === "ar" ? "ar-EG-u-nu-arab" : "en",
+    { minimumIntegerDigits: 2, useGrouping: false },
+  );
   const units = Object.fromEntries(
     [...countdown.querySelectorAll("[data-countdown-unit]")].map((node) => [
       node.dataset.countdownUnit,
@@ -52,7 +57,7 @@
     ]),
   );
 
-  const format = (value) => String(value).padStart(2, "0");
+  const format = (value) => numberFormatter.format(Math.max(0, value));
 
   const updateCountdown = () => {
     const distance = Math.max(0, target - Date.now());
@@ -65,10 +70,12 @@
     units.hours.textContent = format(hours);
     units.minutes.textContent = format(minutes);
     units.seconds.textContent = format(seconds);
-    countdown.setAttribute(
-      "aria-label",
-      `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds until the engagement`,
-    );
+    const accessibleCountdown =
+      language === "ar"
+        ? `متبقي حتى الخطوبة: ${format(days)} يوم، ${format(hours)} ساعة، ${format(minutes)} دقيقة، و${format(seconds)} ثانية.`
+        : `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds until the engagement`;
+
+    countdown.setAttribute("aria-label", accessibleCountdown);
   };
 
   updateCountdown();

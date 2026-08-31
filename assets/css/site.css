@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Ballet&family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Great+Vibes&family=Italiana&family=Italianno&family=Montserrat:wght@400;500;600;700;800&family=Mrs+Saint+Delafield&family=Qwigley&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Aref+Ruqaa+Ink:wght@400;700&family=Ballet&family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Great+Vibes&family=Italiana&family=Italianno&family=Montserrat:wght@400;500;600;700;800&family=Mrs+Saint+Delafield&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Qwigley&display=swap");
 
 /*
  * Editable type-role map:
@@ -30,6 +30,9 @@
   --note-script: "Caveat", cursive;
   --rsvp-display: "Italiana", var(--serif);
   --condensed: "Anton", Impact, "Arial Narrow", sans-serif;
+  --arabic-display: "Aref Ruqaa Ink", serif;
+  --arabic-body: "Noto Naskh Arabic", serif;
+  --arabic-utility: "Noto Kufi Arabic", sans-serif;
   --scene-inline: clamp(1.25rem, 5vw, 5rem);
 }
 
@@ -546,6 +549,130 @@ a { color: inherit; }
   text-transform: none;
 }
 
+/* Arabic keeps the same art direction with type roles designed for connected RTL text. */
+html[lang="ar"] body { font-family: var(--arabic-body); }
+
+html[lang="ar"] .opening__strapline text {
+  direction: rtl;
+  unicode-bidi: plaintext;
+  font-family: var(--arabic-utility);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+html[lang="ar"] .opening__names { direction: rtl; }
+
+html[lang="ar"] .display-name,
+html[lang="ar"] .opening__ampersand,
+html[lang="ar"] .section-title,
+html[lang="ar"] .invitation__orange-title,
+html[lang="ar"] .invitation__names,
+html[lang="ar"] .invitation__and,
+html[lang="ar"] .invitation__date,
+html[lang="ar"] .invitation__closed-label,
+html[lang="ar"] .rsvp-note,
+html[lang="ar"] .rsvp__signature strong {
+  font-family: var(--arabic-display);
+  letter-spacing: 0;
+}
+
+html[lang="ar"] .display-name {
+  font-size: clamp(4.2rem, 17vw, 9rem);
+  line-height: 1;
+}
+
+html[lang="ar"] .opening__ampersand {
+  margin-block: -0.45rem;
+  font-size: clamp(3rem, 11vw, 5.8rem);
+  line-height: 0.9;
+}
+
+html[lang="ar"] .section-title {
+  font-size: clamp(3.7rem, 12vw, 7rem);
+  line-height: 1.05;
+}
+
+html[lang="ar"] .invitation__orange-title {
+  font-size: clamp(3.4rem, 13vw, 7rem);
+  line-height: 0.95;
+}
+
+html[lang="ar"] .invitation__names {
+  font-size: clamp(1.8rem, 6vw, 3.4rem);
+  line-height: 1.1;
+}
+
+html[lang="ar"] .invitation__and {
+  margin-block: -0.1em;
+  font-size: 0.72em;
+  line-height: 1;
+}
+
+html[lang="ar"] .invitation__details {
+  font-family: var(--arabic-body);
+  font-size: clamp(0.82rem, 1.7vw, 1rem);
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+html[lang="ar"] .invitation__closed-label {
+  font-size: clamp(2.65rem, 10vw, 5.3rem);
+  line-height: 1;
+}
+
+html[lang="ar"] .formal-copy,
+html[lang="ar"] .info-copy,
+html[lang="ar"] .rsvp__signature {
+  font-family: var(--arabic-body);
+  line-height: 1.7;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+html[lang="ar"] .formal-copy { font-size: clamp(1rem, 1.9vw, 1.22rem); }
+html[lang="ar"] .info-copy { font-size: clamp(0.92rem, 1.7vw, 1.08rem); }
+
+html[lang="ar"] .celebration__rules,
+html[lang="ar"] .calendar,
+html[lang="ar"] .countdown,
+html[lang="ar"] .rsvp-form,
+html[lang="ar"] .button,
+html[lang="ar"] .dress-code__group h3 {
+  font-family: var(--arabic-utility);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+html[lang="ar"] .celebration__rules { line-height: 1.7; }
+html[lang="ar"] .calendar abbr { text-decoration: none; }
+
+html[lang="ar"] .countdown__number,
+html[lang="ar"] .countdown__unit:not(:last-child)::after {
+  font-family: var(--arabic-utility);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+html[lang="ar"] .rsvp-title {
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  line-height: 1.12;
+}
+
+html[lang="ar"] .rsvp-note {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.2;
+}
+
+html[lang="ar"] .rsvp__signature strong {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.15;
+}
+
+html[lang="ar"] .rsvp-form__choice { line-height: 1.55; }
+html[lang="ar"] .rsvp-form input,
+html[lang="ar"] .rsvp-form textarea { text-align: start; }
+
 /* Motion is opt-in so the full invitation remains visible without JavaScript. */
 .motion-ready .scene:not(.play) > .floral,
 .motion-ready .scene:not(.play) [data-motion="opening-copy"],
@@ -606,6 +733,31 @@ a { color: inherit; }
 
 .motion-ready .date-scene.play .calendar {
   animation: motion-from-right 0.78s cubic-bezier(0.2, 0.82, 0.2, 1) 0.16s both;
+}
+
+html[dir="rtl"].motion-ready .celebration.play [data-motion="scene-copy"],
+html[dir="rtl"].motion-ready .boat-scene.play [data-motion="scene-copy"] {
+  animation-name: motion-from-left;
+}
+
+html[dir="rtl"].motion-ready .celebration.play [data-motion="scene-art"],
+html[dir="rtl"].motion-ready .boat-scene.play [data-motion="scene-art"] {
+  animation-name: motion-from-right;
+}
+
+html[dir="rtl"].motion-ready .ceremony-scene.play [data-motion="scene-copy"],
+html[dir="rtl"].motion-ready .car-scene.play [data-motion="scene-copy"],
+html[dir="rtl"].motion-ready .date-scene.play [data-motion="scene-copy"] {
+  animation-name: motion-from-right;
+}
+
+html[dir="rtl"].motion-ready .ceremony-scene.play [data-motion="scene-art"],
+html[dir="rtl"].motion-ready .car-scene.play [data-motion="scene-art"] {
+  animation-name: motion-from-left;
+}
+
+html[dir="rtl"].motion-ready .date-scene.play .calendar {
+  animation-name: motion-from-left;
 }
 
 .motion-ready .dress-code.play [data-motion="scene-copy"] { animation-name: motion-from-top; }
@@ -897,6 +1049,9 @@ a { color: inherit; }
   .scene__art { min-height: 19rem; }
   .invitation__stage { min-height: 27rem; }
   .invitation__card { padding: 2.5rem clamp(1rem, 3vw, 2rem); }
+  html[lang="ar"] .invitation__card { padding: 1rem clamp(0.9rem, 2.5vw, 1.5rem); }
+  html[lang="ar"] .invitation__names { font-size: clamp(1.65rem, 4.6vw, 2.35rem); }
+  html[lang="ar"] .invitation__details { line-height: 1.45; }
   .location-scene__art { min-height: 19rem; }
   .map-frame { height: 18rem; }
 

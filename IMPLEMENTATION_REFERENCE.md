@@ -423,7 +423,7 @@ Completion condition: the site no longer depends on hundreds of anonymous embedd
 
 ### Task 4 — Rebuild the semantic scene skeleton
 
-Status: **Complete (2026-08-30).** Both routes now share the same nine-scene semantic structure in the original order. Essential invitation copy, calendar/countdown, venue details, map embeds, dress-code labels, and RSVP field labels are live DOM content. Automated viewport captures are stored in [`output/playwright/task-4/`](output/playwright/task-4/). The Arabic route deliberately marks the temporary English copy as `lang="en"` until the approved translation and RTL treatment are added in Task 8.
+Status: **Complete (2026-08-30).** Both routes now share the same nine-scene semantic structure in the original order. Essential invitation copy, calendar/countdown, venue details, map embeds, dress-code labels, and RSVP field labels are live DOM content. Automated viewport captures are stored in [`output/playwright/task-4/`](output/playwright/task-4/). The temporary Arabic-route placeholders created here were replaced by the completed Arabic implementation in Task 8.
 
 - Recreate all nine sections using art stages and live-copy layers.
 - Preserve the original scene order.
@@ -433,7 +433,7 @@ Completion condition: all essential information is present as real DOM text.
 
 ### Task 5 — Convert image text while preserving typography
 
-Status: **Complete (2026-08-31).** Every meaningful text role now uses live, selectable DOM text with a dedicated font treatment. The final mapping keeps the source’s distinct formal scripts, scene calligraphy, invitation serif, informational sans, condensed countdown, RSVP monogram, and personal-note hand. Automated comparison and image-disabled captures are stored in [`output/playwright/task-5/`](output/playwright/task-5/). Arabic font selection remains part of Task 8 because the current `/ar/` copy is deliberately marked as English.
+Status: **Complete (2026-08-31).** Every meaningful text role now uses live, selectable DOM text with a dedicated font treatment. The final mapping keeps the source’s distinct formal scripts, scene calligraphy, invitation serif, informational sans, condensed countdown, RSVP monogram, and personal-note hand. Automated comparison and image-disabled captures are stored in [`output/playwright/task-5/`](output/playwright/task-5/). Complementary Arabic font roles were completed in Task 8.
 
 | Live role | Implemented family | Source relationship |
 |---|---|---|
@@ -470,7 +470,7 @@ Status: **Complete (2026-09-01).** The rebuilt site now uses content-driven scen
 | Laptop/desktop | 1024 px and wider | Near-viewport-height scenes with bounded art, map, dress-code, and RSVP dimensions |
 | Wide desktop | 1440 px and wider | Wider bounded content canvas without stretching artwork beyond its useful scale |
 
-Verification covered 320 × 568, 390 × 844, 667 × 375, 844 × 390, 768 × 1024, 1366 × 768, and 1920 × 1080. Every target reported a document width equal to its viewport, no clipped visible headings/copy/forms, and no browser console errors. Both `/` and `/ar/` retain nine scenes; the Arabic route remains correctly declared as RTL while its temporary English inner copy stays intentionally marked for Task 8.
+Verification covered 320 × 568, 390 × 844, 667 × 375, 844 × 390, 768 × 1024, 1366 × 768, and 1920 × 1080. Every target reported a document width equal to its viewport, no clipped visible headings/copy/forms, and no browser console errors. Both `/` and `/ar/` retain nine scenes; Task 8 subsequently completed the Arabic copy and RTL treatment.
 
 - Add portrait, landscape, tablet, and desktop arrangements.
 - Allow text to determine section height.
@@ -501,6 +501,22 @@ Completion condition: the rebuilt sequence matches the perceived source sequence
 
 ### Task 8 — Add Arabic content and RTL behavior
 
+Status: **Complete (2026-09-01).** `/ar/` now contains complete Arabic metadata, navigation, invitation copy, calendar, Arabic-Indic countdown, venue instructions, map titles, dress-code labels, image descriptions, RSVP copy, form labels, and fallback messaging. The temporary nested English language/direction override and pending-copy marker were removed.
+
+| Arabic role | Implemented family | Use |
+|---|---|---|
+| Calligraphic display | `Aref Ruqaa Ink` | Couple names, scene headings, envelope message, invitation names/date, RSVP note and signature |
+| Formal prose | `Noto Naskh Arabic` | Invitation details, supporting copy, venue text, and personal sign-off |
+| Utility and data | `Noto Kufi Arabic` | Strapline, rules, calendar, countdown, dress-code labels, form labels, controls, and buttons |
+
+- Responsive grids mirror copy/art placement through RTL flow while maps, photographs, florals, the Nile, and the boat path retain their intended orientation.
+- Directional entrances mirror the resulting RTL grid placement instead of mechanically flipping every animation.
+- The shared countdown script localizes the Arabic route with Arabic-Indic digits and an Arabic accessibility label while preserving Western numerals and English announcements on `/`.
+- Reduced-motion behavior remains the same in both languages, showing the stable open invitation without entrance animation.
+- The RSVP interface is fully translated but remains intentionally disabled until the submission provider is selected and connected in Task 9.
+
+Final captures are stored in [`output/playwright/task-8/`](output/playwright/task-8/). Automated checks covered 320 × 568, 390 × 844, 667 × 375, 844 × 390, 768 × 1024, 1366 × 768, and 1920 × 1080 with no horizontal overflow, clipped visible copy, or console errors. Browser checks also confirmed all three Arabic web fonts loaded, no visible English copy remained, motion directions matched RTL placement, and both language routes retained nine scenes.
+
 - Insert approved Arabic copy.
 - Apply Arabic font roles and RTL layouts.
 - Mirror alignment where appropriate without blindly mirroring maps or artwork.
@@ -510,7 +526,7 @@ Completion condition: `/ar/` is complete, readable, and visually equivalent in h
 
 ### Task 9 — Add RSVP submission
 
-- Create Formspree endpoint and connect the on-page form.
+- Select a submission provider after comparing hosted forms, Google Sheets-based approaches, and small serverless endpoints, then connect the on-page form.
 - Add validation and submission states.
 - Add the language field and honeypot.
 - Verify both English and Arabic submissions privately reach the correct destination.
@@ -578,7 +594,7 @@ Deployment verification:
 ## 13. Risks and decisions to revisit
 
 - **Exact source fonts:** Some Canva text may not expose its original font name. Match visually and document substitutions.
-- **Arabic copy:** Final translations and official name spellings require approval.
+- **Arabic wording:** The implemented translation is complete; family-preferred phrasing or spelling can still be edited without structural changes.
 - **RSVP privacy:** Guest data must stay outside the public repository.
 - **Spam:** A public static form can attract spam; start with Formspree's built-in protection and a honeypot.
 - **External maps:** Embedded maps depend on Google and may display their own language/UI depending on the guest's environment.
