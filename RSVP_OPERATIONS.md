@@ -18,8 +18,9 @@ Do not replace the randomized route with the destination email in committed code
 
 - The FormSubmit randomized AJAX endpoint is configured in `assets/js/rsvp-config.js`.
 - The activated endpoint returned `success: true` from the deployed site's origin on 1 September 2026.
+- Real English and Arabic browser submissions on the public pages showed the correct localized success state without provider UI or console errors.
 - A blocked-network simulation verified the localized error state, preserved values, re-enabled submit button, and Google Form fallback.
-- The FormSubmit notification named `Codex FormSubmit integration test - please delete` can be deleted after receipt is confirmed.
+- These FormSubmit test notifications can be deleted after receipt is confirmed: `Codex FormSubmit integration test - please delete`, `Codex live English test - please delete`, and `اختبار فورم سبمت العربي - يرجى الحذف`.
 - Two older Formspree test responses may also be deleted: `Codex English integration test — please delete` and `اختبار كوديكس العربي — يرجى الحذف`.
 
 ## What the form sends
