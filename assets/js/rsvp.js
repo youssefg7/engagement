@@ -28,14 +28,14 @@
   }[language];
 
   const endpoint = String(window.ENGAGEMENT_RSVP?.endpoint || "").trim();
-  const endpointIsReady = window.ENGAGEMENT_RSVP?.provider === "formspree"
-    && /^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(endpoint);
+  const endpointIsReady = window.ENGAGEMENT_RSVP?.provider === "formsubmit"
+    && /^https:\/\/formsubmit\.co\/ajax\/[A-Za-z0-9@._%+-]+$/.test(endpoint);
   const fields = form.querySelector("[data-rsvp-fields]");
   const button = form.querySelector("[data-rsvp-submit]");
   const status = form.querySelector("[data-rsvp-status]");
   const backup = form.querySelector("[data-rsvp-backup]");
   const name = form.elements.namedItem("name");
-  const honeypot = form.elements.namedItem("_gotcha");
+  const honeypot = form.elements.namedItem("_honey");
   const submittedAt = form.elements.namedItem("submitted_at");
   const pageUrl = form.elements.namedItem("page_url");
   const submissionId = form.elements.namedItem("submission_id");
@@ -119,7 +119,10 @@
         headers: { Accept: "application/json" },
       });
 
-      if (!response.ok) {
+      const result = await response.json().catch(() => null);
+      const submissionAccepted = result?.success === true || result?.success === "true";
+
+      if (!response.ok || !submissionAccepted) {
         throw new Error(`RSVP request failed with status ${response.status}`);
       }
 

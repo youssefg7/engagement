@@ -324,7 +324,7 @@ For navigation clarity, official venue names may appear in Arabic followed by En
 
 ### 9.1 Recommended approach
 
-Keep the custom bilingual HTML form and submit it to a Formspree form endpoint with browser `fetch`. Formspree is designed for static sites, permits cross-origin AJAX submissions, and treats the form ID as public routing data. This preserves the invitation's own controls and inline states without embedding provider UI or storing a secret in GitHub.
+Keep the custom bilingual HTML form and submit it to a FormSubmit randomized AJAX endpoint with browser `fetch`. FormSubmit supports cross-origin AJAX submissions and documents unlimited forms and submissions. Its randomized route keeps the destination email out of the public source. This preserves the invitation's own controls and inline states without embedding provider UI or storing a secret in GitHub.
 
 Required fields:
 
@@ -343,15 +343,15 @@ Optional field:
 - Show localized ready, submitting, success, validation-error, and network-error states inline.
 - Include language, submission time, page URL, submission ID, and a honeypot in each request.
 - Do not place guest names or messages in the repository, localStorage, URL query strings, analytics, or public static files.
-- Keep a localized link to the existing Google Form while the Formspree endpoint is unavailable.
+- Keep a localized link to the existing Google Form while the FormSubmit endpoint is unavailable.
 
 ### 9.3 Required setup dependency
 
 Before enabling the live endpoint:
 
-- Create a Formspree form owned by the couple's chosen email account.
-- Copy the public endpoint in the form `https://formspree.io/f/{form_id}` into `assets/js/rsvp-config.js`.
-- Keep the destination email and Formspree dashboard private.
+- Activate FormSubmit using the couple's chosen notification inbox.
+- Replace the email route with the randomized endpoint in the form `https://formsubmit.co/ajax/{randomized_route}` in `assets/js/rsvp-config.js` before committing.
+- Keep the destination email and notification inbox private.
 - Verify one English and one Arabic submission reaches the destination before deployment.
 
 The existing public Google Form remains the temporary fallback: <https://forms.gle/daqf2ug4TypLtKwH8>. Owner operating instructions are in [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
@@ -379,7 +379,7 @@ Use the current official major versions at implementation time for:
 
 Add `.nojekyll` so the static directory is served directly.
 
-Do not place RSVP secrets, private guest data, or credentials in workflow files. A Formspree form ID is public routing data; dashboard credentials, notification emails, and submissions are private.
+Do not place RSVP secrets, private guest data, or credentials in workflow files. The FormSubmit randomized route is public routing data; notification emails, mailbox credentials, and submissions are private.
 
 ## 11. Ordered implementation tasks
 
@@ -522,7 +522,7 @@ Completion condition: `/ar/` is complete, readable, and visually equivalent in h
 
 ### Task 9 — Add RSVP submission
 
-Status: **Complete (2026-09-01).** The custom bilingual form submits to Formspree endpoint `xzebeoza` using a small local Vanilla JS handler, preserving the invitation's visual design with no provider UI. Both routes provide native validation, localized ready/submitting/success/failure states, submission locking, a honeypot, language and diagnostic metadata, and the existing Google Form fallback. Real English and Arabic browser submissions returned HTTP 200; request inspection confirmed the intended fields and an offline simulation verified value preservation and fallback behavior. Final captures are in [`output/playwright/task-9/`](output/playwright/task-9/). See [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
+Status: **Complete (migrated to FormSubmit 2026-09-01).** The custom bilingual form submits to FormSubmit through an activated randomized AJAX route using a small local Vanilla JS handler, preserving the invitation's visual design with no provider UI. Both routes provide native validation, localized ready/submitting/success/failure states, submission locking, a provider-compatible honeypot, language and diagnostic metadata, and the existing Google Form fallback. The handler checks FormSubmit's JSON acceptance value as well as HTTP status so an activation or provider error cannot appear as a successful RSVP. The private route accepted an integration request from the deployed site's origin; browser verification covers both language routes. See [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
 
 - Select a submission provider after comparing hosted forms, Google Sheets-based approaches, and small serverless endpoints, then connect the on-page form.
 - Add validation and submission states.

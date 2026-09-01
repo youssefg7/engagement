@@ -1,5 +1,5 @@
-/* Public form routing only. A Formspree form ID is public by design. */
+/* Public form routing only. FormSubmit's randomized route keeps the destination email out of source. */
 window.ENGAGEMENT_RSVP = Object.freeze({
-  provider: "formspree",
-  endpoint: "https://formspree.io/f/xzebeoza",
+  provider: "formsubmit",
+  endpoint: "https://formsubmit.co/ajax/04935cacc23651fcc5774b9d37073cea",
 });
