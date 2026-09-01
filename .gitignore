@@ -2,3 +2,4 @@
 .playwright-cli/
 output/playwright/cli-session/
 output/asset-audit/
+output/task-9-rsvp/

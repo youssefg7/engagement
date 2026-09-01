@@ -10,6 +10,8 @@
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="../assets/css/site.css">
     <script src="../assets/js/site.js" defer></script>
+    <script src="../assets/js/rsvp-config.js" defer></script>
+    <script src="../assets/js/rsvp.js" defer></script>
   </head>
   <body data-language="ar">
     <a class="skip-link" href="#main-content">انتقل إلى الدعوة</a>
@@ -202,18 +204,26 @@
             <p class="formal-copy rsvp-note">خبرونا إن كنتم ستشاركوننا!</p>
             <p class="info-copy">نسعد بمشاركتكم هذه اللحظة المميزة!</p>
             <p class="info-copy rsvp__deadline">يرجى تأكيد الحضور قبل <time datetime="2026-09-15">١٥.٠٩.٢٠٢٦</time>.</p>
-            <form class="rsvp-form" data-rsvp-form aria-describedby="rsvp-form-status">
-              <fieldset disabled>
-                <p class="rsvp-form__field"><label for="full-name">الاسم بالكامل</label><input id="full-name" name="name" type="text" autocomplete="name" required></p>
+            <form class="rsvp-form" data-rsvp-form method="post" accept-charset="UTF-8" aria-describedby="rsvp-form-status">
+              <fieldset data-rsvp-fields disabled>
+                <p class="rsvp-form__field"><label for="full-name">الاسم بالكامل</label><input id="full-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required></p>
                 <fieldset class="rsvp-form__options">
                   <legend>هل ستحضرون؟</legend>
-                  <label class="rsvp-form__choice"><input name="attendance" type="radio" value="attending" required> يسعدني الحضور</label>
-                  <label class="rsvp-form__choice"><input name="attendance" type="radio" value="not-attending"> لن أتمكن من الحضور</label>
+                  <label class="rsvp-form__choice"><input name="attendance" type="radio" value="Attending" required> يسعدني الحضور</label>
+                  <label class="rsvp-form__choice"><input name="attendance" type="radio" value="Not attending"> لن أتمكن من الحضور</label>
                 </fieldset>
-                <p class="rsvp-form__field"><label for="message">رسالة اختيارية للعروسين</label><textarea id="message" name="message"></textarea></p>
-                <button class="button" type="submit" disabled>تأكيد الحضور</button>
+                <p class="rsvp-form__field"><label for="message">رسالة اختيارية للعروسين</label><textarea id="message" name="message" maxlength="500"></textarea></p>
+                <p class="rsvp-form__guard" aria-hidden="true"><label for="website">الموقع الإلكتروني</label><input id="website" name="_gotcha" type="text" autocomplete="off" tabindex="-1"></p>
+                <input name="language" type="hidden" value="ar">
+                <input name="submitted_at" type="hidden">
+                <input name="page_url" type="hidden">
+                <input name="submission_id" type="hidden">
+                <input name="_subject" type="hidden" value="New engagement RSVP (Arabic)">
+                <button class="button" type="submit" data-rsvp-submit disabled>تأكيد الحضور</button>
               </fieldset>
-              <p class="rsvp-form__fallback" id="rsvp-form-status">حتى يتم تفعيل الرد من خلال الموقع، يرجى <a href="https://forms.gle/daqf2ug4TypLtKwH8" rel="external">تأكيد الحضور عبر النموذج الحالي</a>.</p>
+              <p class="rsvp-form__status" id="rsvp-form-status" data-rsvp-status role="status" aria-live="polite">جارٍ تجهيز نموذج الرد…</p>
+              <p class="rsvp-form__backup" data-rsvp-backup hidden>إلى أن يتم ربط الرد عبر الموقع، يرجى <a href="https://forms.gle/daqf2ug4TypLtKwH8" rel="external" target="_blank">استخدام نموذج تأكيد الحضور</a>.</p>
+              <noscript><p class="rsvp-form__backup">يتطلب الرد من خلال الموقع تفعيل JavaScript. يرجى <a href="https://forms.gle/daqf2ug4TypLtKwH8" rel="external" target="_blank">استخدام نموذج تأكيد الحضور</a>.</p></noscript>
             </form>
             <p class="rsvp__signature">مع محبتنا،<strong>لارا ويوسف</strong></p>
           </article>

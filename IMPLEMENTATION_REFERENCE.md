@@ -324,7 +324,7 @@ For navigation clarity, official venue names may appear in Arabic followed by En
 
 ### 9.1 Recommended approach
 
-Use a native on-page HTML form connected to Formspree. This keeps the site static while allowing private submissions without storing guest information in GitHub.
+Keep the custom bilingual HTML form and submit it to a Formspree form endpoint with browser `fetch`. Formspree is designed for static sites, permits cross-origin AJAX submissions, and treats the form ID as public routing data. This preserves the invitation's own controls and inline states without embedding provider UI or storing a secret in GitHub.
 
 Required fields:
 
@@ -335,30 +335,26 @@ Optional field:
 
 - Message for the couple.
 
-Hidden/system fields:
-
-- Language or route (`en` or `ar`).
-- Honeypot field for simple spam filtering.
-
 ### 9.2 Form behavior
 
-- All inputs have visible labels.
-- Attendance is a clearly labeled radio group or equivalent accessible control.
-- Submit button is visible and keyboard accessible.
-- Show submitting, success, validation-error, and network-error states inline.
-- Use progressive enhancement: the native form remains valid even if enhanced JavaScript behavior fails.
+- All inputs have visible localized labels and native browser validation.
+- Attendance is a clearly labeled radio group.
+- The submit button is keyboard accessible and disabled while a request is running.
+- Show localized ready, submitting, success, validation-error, and network-error states inline.
+- Include language, submission time, page URL, submission ID, and a honeypot in each request.
 - Do not place guest names or messages in the repository, localStorage, URL query strings, analytics, or public static files.
-- Keep the existing Google Form as a temporary fallback during rollout if useful.
+- Keep a localized link to the existing Google Form while the Formspree endpoint is unavailable.
 
 ### 9.3 Required setup dependency
 
-Before enabling the live RSVP endpoint, confirm:
+Before enabling the live endpoint:
 
-- Notification email address.
-- Formspree form endpoint/account ownership.
-- Whether both languages should submit to the same inbox and form.
+- Create a Formspree form owned by the couple's chosen email account.
+- Copy the public endpoint in the form `https://formspree.io/f/{form_id}` into `assets/js/rsvp-config.js`.
+- Keep the destination email and Formspree dashboard private.
+- Verify one English and one Arabic submission reaches the destination before deployment.
 
-The recommended default is one endpoint with a hidden language field.
+The existing public Google Form remains the temporary fallback: <https://forms.gle/daqf2ug4TypLtKwH8>. Owner operating instructions are in [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
 
 ## 10. GitHub Pages deployment specification
 
@@ -383,7 +379,7 @@ Use the current official major versions at implementation time for:
 
 Add `.nojekyll` so the static directory is served directly.
 
-Do not place RSVP secrets, private guest data, or credentials in workflow files. A standard Formspree form identifier is public by design; account credentials are not.
+Do not place RSVP secrets, private guest data, or credentials in workflow files. A Formspree form ID is public routing data; dashboard credentials, notification emails, and submissions are private.
 
 ## 11. Ordered implementation tasks
 
@@ -513,7 +509,7 @@ Status: **Complete (2026-09-01).** `/ar/` now contains complete Arabic metadata,
 - Directional entrances mirror the resulting RTL grid placement instead of mechanically flipping every animation.
 - The shared countdown script localizes the Arabic route with Arabic-Indic digits and an Arabic accessibility label while preserving Western numerals and English announcements on `/`.
 - Reduced-motion behavior remains the same in both languages, showing the stable open invitation without entrance animation.
-- The RSVP interface is fully translated but remains intentionally disabled until the submission provider is selected and connected in Task 9.
+- The RSVP scene was fully translated here and its custom controls remain shared by the provider integration in Task 9.
 
 Final captures are stored in [`output/playwright/task-8/`](output/playwright/task-8/). Automated checks covered 320 × 568, 390 × 844, 667 × 375, 844 × 390, 768 × 1024, 1366 × 768, and 1920 × 1080 with no horizontal overflow, clipped visible copy, or console errors. Browser checks also confirmed all three Arabic web fonts loaded, no visible English copy remained, motion directions matched RTL placement, and both language routes retained nine scenes.
 
@@ -525,6 +521,8 @@ Final captures are stored in [`output/playwright/task-8/`](output/playwright/tas
 Completion condition: `/ar/` is complete, readable, and visually equivalent in hierarchy rather than a literal left/right copy of English.
 
 ### Task 9 — Add RSVP submission
+
+Status: **Complete (2026-09-01).** The custom bilingual form submits to Formspree endpoint `xzebeoza` using a small local Vanilla JS handler, preserving the invitation's visual design with no provider UI. Both routes provide native validation, localized ready/submitting/success/failure states, submission locking, a honeypot, language and diagnostic metadata, and the existing Google Form fallback. Real English and Arabic browser submissions returned HTTP 200; request inspection confirmed the intended fields and an offline simulation verified value preservation and fallback behavior. Final captures are in [`output/playwright/task-9/`](output/playwright/task-9/). See [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
 
 - Select a submission provider after comparing hosted forms, Google Sheets-based approaches, and small serverless endpoints, then connect the on-page form.
 - Add validation and submission states.
@@ -596,7 +594,7 @@ Deployment verification:
 - **Exact source fonts:** Some Canva text may not expose its original font name. Match visually and document substitutions.
 - **Arabic wording:** The implemented translation is complete; family-preferred phrasing or spelling can still be edited without structural changes.
 - **RSVP privacy:** Guest data must stay outside the public repository.
-- **Spam:** A public static form can attract spam; start with Formspree's built-in protection and a honeypot.
+- **Spam:** A public form endpoint can attract spam; the custom form includes a honeypot, while provider-side limits and filtering should also be monitored.
 - **External maps:** Embedded maps depend on Google and may display their own language/UI depending on the guest's environment.
 - **External fonts:** Google Fonts require a network request. Self-hosting can be considered later but is not required for the simple first version.
 - **Historical CSS:** The source includes many override generations. Consolidate only after active behavior is identified.

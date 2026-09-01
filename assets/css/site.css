@@ -498,6 +498,13 @@ a { color: inherit; }
 
 .rsvp-form textarea { min-height: 6rem; resize: vertical; }
 
+.rsvp-form input[type="text"]:focus-visible,
+.rsvp-form textarea:focus-visible {
+  border-bottom-color: var(--pink);
+  outline: 2px solid transparent;
+  box-shadow: 0 2px 0 var(--pink);
+}
+
 .rsvp-form__choice {
   display: flex !important;
   align-items: center;
@@ -508,6 +515,9 @@ a { color: inherit; }
   letter-spacing: normal;
   text-transform: none;
 }
+
+.rsvp-form__choice input { accent-color: var(--pink); }
+.rsvp-form__choice:has(input:focus-visible) { outline: 2px solid var(--pink); outline-offset: 0.2rem; }
 
 .button {
   min-height: 2.8rem;
@@ -526,13 +536,40 @@ a { color: inherit; }
 .rsvp .button {
   border-color: #f19aad;
   background: #f6a5b6;
-  color: #c94f65;
+  color: #7f2638;
   font-weight: 800;
 }
 
+.rsvp .button:not([disabled]) { cursor: pointer; }
+.rsvp .button:focus-visible { outline: 2px solid var(--ink); outline-offset: 0.25rem; }
 .button[disabled] { cursor: not-allowed; opacity: 0.72; }
-.rsvp-form__fallback { margin: 1rem 0 0; overflow-wrap: anywhere; text-align: center; text-transform: none; }
-.rsvp-form__fallback a { text-underline-offset: 0.2em; }
+
+.rsvp-form__status,
+.rsvp-form__backup {
+  margin: 1rem 0 0;
+  overflow-wrap: anywhere;
+  text-align: center;
+  text-transform: none;
+}
+
+.rsvp-form__status { min-height: 1.5em; }
+.rsvp-form__status[data-tone="success"] { color: #765d3b; font-weight: 700; }
+.rsvp-form__status[data-tone="error"] { color: #a3384c; }
+.rsvp-form__backup a { text-underline-offset: 0.2em; }
+.rsvp-form__backup[hidden] { display: none; }
+
+.rsvp-form__guard {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  inset-inline-start: -10000px;
+}
+
+.rsvp-form.is-submitting fieldset { pointer-events: none; opacity: 0.78; }
+.rsvp-form.is-complete fieldset { display: none; }
 .rsvp-title {
   font-family: var(--rsvp-display);
   font-size: clamp(3.2rem, 13vw, 6.2rem);
