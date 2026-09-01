@@ -21,7 +21,7 @@ Open the spreadsheet and select the `RSVP Responses` tab. The Worker creates thi
 - Browser submission time, invitation page URL, and generated submission ID.
 - Browser user agent for limited delivery troubleshooting.
 
-The rows named `Codex integration check` and `Codex production Worker check` are deployment tests and may be deleted.
+The rows named `Codex integration check`, `Codex production Worker check`, `Codex live English Sheets test — please delete`, and `اختبار جوجل شيت العربي من كوديكس — يرجى الحذف` are deployment tests and may be deleted.
 
 ## Architecture and privacy
 
