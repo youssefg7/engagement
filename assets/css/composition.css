@@ -1,0 +1,472 @@
+/*
+ * Task 11 reference-composition pass.
+ *
+ * Every non-form scene uses the source export's 502.1245 × 767.625 artboard.
+ * Percent anchors below come from assets/images/elements.csv so decorative art,
+ * live text, maps, and motion all share one predictable coordinate system.
+ */
+
+:root {
+  --reference-ratio: 502.1245 / 767.625;
+  --site-width: min(100vw, 41rem, calc(100svh * 0.6541));
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--page-background);
+}
+
+.site {
+  width: var(--site-width);
+  max-width: none;
+  overflow: visible;
+  box-shadow: 0 0 3rem rgb(64 43 43 / 8%);
+}
+
+.scene {
+  container-type: inline-size;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  aspect-ratio: var(--reference-ratio);
+  background: var(--paper);
+}
+
+.scene__inner,
+.opening__inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  display: block;
+}
+
+.scene__copy,
+.scene__art {
+  position: absolute;
+  z-index: 3;
+  width: auto;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+}
+
+.section-title {
+  font-size: 12.2cqi;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.formal-copy,
+.info-copy {
+  max-width: none;
+  margin: 0;
+  font-size: 2.35cqi;
+  line-height: 1.45;
+}
+
+.art-layer,
+.floral {
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Opening */
+.opening {
+  display: block;
+  text-align: center;
+}
+
+.opening__garland { inset: 0 auto auto 13.903%; width: 85.993%; transform: none; }
+.opening > .floral--bottom-left { inset: 0.277% auto auto 0.531%; width: 38.815%; }
+.opening__border--left { inset: 29.11% auto auto 0; width: 21.657%; }
+.opening__border--right { inset: 19.036% 0 auto auto; width: 22.155%; }
+.opening__oval { inset: 22.336% auto auto 25.043%; width: 56.133%; transform: none; opacity: 1; }
+.opening__heart { inset: 29.15% auto auto 49.867%; z-index: 3; width: 7.366%; }
+.opening__divider { inset: 58.318% auto auto 44.093%; z-index: 4; width: 19.507%; }
+.opening__nile { inset: 71.538% auto auto 0.407%; width: 99.529%; transform: none; opacity: 1; }
+.opening__boat { inset: 69.264% auto auto 59.406%; z-index: 5; width: 22.096%; }
+
+.opening__copy {
+  inset: 24.5% auto auto 24%;
+  z-index: 5;
+  width: 58%;
+  max-width: none;
+}
+
+.opening__strapline {
+  width: 84%;
+  margin: 0 auto -1.5cqi;
+}
+
+.opening__strapline text {
+  font-size: 12px;
+  letter-spacing: 1.35px;
+}
+
+.opening__names { gap: 0; }
+.display-name { font-size: 12.6cqi; line-height: 0.86; }
+.opening__ampersand {
+  margin: -1.6cqi 0 -0.5cqi;
+  font-family: var(--hero-script);
+  font-size: 8.6cqi;
+  line-height: 0.9;
+}
+
+.opening__bird--1 { left: 7.37%; top: 28.27%; width: 17.13%; }
+.opening__bird--2 { left: 63.62%; top: 6%; width: 12.99%; }
+.opening__bird--3 { left: 76.52%; top: 35.37%; width: 17.96%; }
+.opening__bird--4 { left: 15.12%; top: 53.72%; width: 11.33%; }
+.opening__bird--5 { left: 20.04%; top: 13.77%; width: 11.33%; }
+.opening__bird--6 { left: 74.95%; top: 64.35%; width: 12.16%; }
+
+/* Invitation collage */
+.invitation { background: var(--paper); }
+.invitation__stage { position: absolute; inset: 0; min-height: 0; }
+.invitation > .floral--top-right { inset: 59.562% 2.033% auto auto; width: 42.2%; }
+.invitation > .floral--bottom-left { inset: 47.918% auto auto 0.034%; width: 32.611%; }
+.invitation__floral--upper { inset: 0.847% 2.14% auto auto; width: 28.266%; }
+.invitation__floral--center { inset: 0.193% auto auto 0.531%; width: 38.815%; }
+
+.invitation__closed-paper {
+  inset: 31% auto auto 8%;
+  z-index: 20;
+  width: 84%;
+  rotate: -3deg;
+  opacity: 0;
+}
+
+.invitation__closed-label {
+  inset: 43% 13% auto;
+  z-index: 21;
+  font-size: 10.5cqi;
+  line-height: 0.8;
+  rotate: -3deg;
+  opacity: 0;
+}
+
+.invitation__seal { inset: 52.5% auto auto 42%; z-index: 22; width: 17%; opacity: 0; }
+.invitation__envelope-back { inset: 30.098% auto auto 18.969%; z-index: 1; width: 69.189%; }
+.invitation__envelope-front { inset: 66.952% auto auto 18.969%; z-index: 9; width: 69.189%; }
+.invitation__photo--left { inset: 33.951% auto auto 58.477%; z-index: 7; width: 27.016%; }
+.invitation__photo--right { inset: 5.988% auto auto 34.872%; z-index: 2; width: 60.212%; }
+.invitation__card-art { position: absolute; inset: 0; z-index: 5; }
+.invitation__card-fill { inset: 31.706% auto auto 15.705%; width: 49.638%; }
+.invitation__card-lace { inset: 26.915% auto auto 8.381%; width: 64.326%; }
+
+.invitation__card {
+  inset: 35.4% auto auto 18.7%;
+  z-index: 6;
+  width: 42.8%;
+  min-height: 31%;
+  padding: 3.1cqi 2.7cqi;
+  display: grid;
+  place-content: center;
+  border: 0;
+  background: transparent;
+  rotate: -10.4deg;
+}
+
+.invitation__names { font-size: 4.5cqi; line-height: 0.85; }
+.invitation__details { margin-top: 1.3cqi; font-size: 1.6cqi; line-height: 1.3; }
+.invitation__date { margin: 0.75cqi 0; font-size: 2em; }
+.invitation__lilies { inset: 47.63% auto auto 61.871%; z-index: 10; width: 25.441%; }
+.invitation__amaranthus { inset: 60.424% auto auto 55.098%; z-index: 11; width: 36.778%; }
+.invitation__bouquet { inset: 61.318% auto auto 55.232%; z-index: 12; width: 29.74%; }
+.invitation__orange-title {
+  inset: 8.5% 28% auto 20%;
+  z-index: 8;
+  font-size: 8.6cqi;
+  line-height: 0.64;
+  transform: none;
+  rotate: -4deg;
+}
+
+/* Celebration */
+.celebration { background: var(--paper); }
+.celebration > .floral--top-right { inset: 59.563% 2.033% auto auto; width: 42.2%; }
+.celebration > .floral--bottom-left { inset: 0.896% 2.14% auto auto; width: 28.266%; }
+.celebration__floral--left { inset: 0.202% auto auto 0.531%; width: 38.815%; }
+.celebration__floral--right { inset: 47.967% auto auto 0.034%; width: 32.611%; }
+.celebration .scene__copy { inset: 11.5% 11% auto; width: 78%; }
+.celebration .section-title { font-size: 12.7cqi; }
+.celebration .formal-copy { margin-top: 6cqi; font-size: 2.45cqi; line-height: 1.35; }
+.celebration__rules {
+  margin-top: 5cqi;
+  font-size: 2.15cqi;
+  line-height: 1.35;
+}
+.celebration__rules li + li { margin-top: 2.6cqi; }
+.celebration .scene__art { inset: 0; width: 100%; height: 100%; }
+.celebration__child { inset: 66.564% auto auto 28.413%; width: 44.345%; }
+
+/* Date */
+.date-scene { background: var(--paper); }
+.date-scene > .floral--top-left { inset: 0 auto auto 0; width: 47.797%; }
+.date-scene > .floral--bottom-right { inset: 66.428% 1.355% auto auto; width: 43.594%; }
+.date__floral--upper-right { inset: 0 1.364% auto auto; width: 43.196%; }
+.date__floral--lower-left { inset: 51.536% auto auto 0; width: 38.014%; }
+.date-layout { display: block; }
+.date-scene .scene__copy { inset: 8% 20% auto; width: 60%; }
+.date-scene .section-title { font-size: 13.5cqi; }
+.calendar {
+  position: absolute;
+  inset: 24% auto auto 20%;
+  z-index: 3;
+  width: 60%;
+  font-size: 1.65cqi;
+}
+.calendar caption { margin-bottom: 1.7cqi; font-size: 2.5cqi; }
+.calendar th,
+.calendar td { height: 4.35cqi; padding: 0; }
+.calendar__day--event span { width: 4.6cqi; height: 4.6cqi; }
+.date-layout__date {
+  position: absolute;
+  inset: 59% 18% auto;
+  z-index: 3;
+  width: 64%;
+  text-align: center;
+  font-size: 2.35cqi;
+}
+.countdown {
+  position: absolute;
+  inset: 66.5% auto auto 18%;
+  z-index: 3;
+  width: 64%;
+  margin: 0;
+  gap: 1.2cqi;
+}
+.countdown__unit { padding: 1.1cqi 0; }
+.countdown__number { font-size: 6.8cqi; }
+.countdown__label { margin-top: 1cqi; font-size: 1.45cqi; }
+.countdown__unit:not(:last-child)::after {
+  inset-block-start: 1cqi;
+  inset-inline-end: -1.2cqi;
+  font-size: 5.5cqi;
+}
+
+/* Locations */
+.location-scene { background: var(--paper); }
+.location-scene .scene__copy { width: 76%; text-align: center; }
+.location-scene .formal-copy { font-size: 2.2cqi; }
+.location-scene .info-copy { font-size: 2.05cqi; }
+.location-scene__art { z-index: 3; }
+.map-frame { width: 100%; height: 100%; margin: 0; background: var(--cream); }
+
+.ceremony-scene > .floral--top-left { inset: 32.852% auto auto 22.368%; width: 62.314%; }
+.ceremony-scene > .floral--bottom-right { inset: 0 auto auto 0; width: 44.769%; }
+.ceremony__floral--upper-right { inset: 0.508% 0.292% auto auto; width: 34.835%; }
+.ceremony__floral--lower-right { inset: 68.089% 2.508% auto auto; width: 37.821%; }
+.ceremony-scene .scene__copy { inset: 10% 12% auto; }
+.ceremony-scene .location-scene__art { inset: 32.8% auto auto 22.3%; width: 62.35%; height: 30.85%; }
+.location-scene__details {
+  position: absolute;
+  inset: 67.8% 16% auto;
+  z-index: 4;
+  width: 68%;
+  text-align: center;
+}
+.location-scene__details .info-copy { margin-top: 2cqi; }
+
+.boat-scene > .floral--top-right { inset: 0 3.257% auto auto; width: 21.861%; }
+.boat-scene__border { inset: 0 auto auto 0; width: 21.609%; }
+.boat-scene .scene__copy { inset: 3.2% 12% auto; }
+.boat-scene .section-title { font-size: 11.6cqi; }
+.boat-scene .scene__copy .formal-copy { margin-top: 1.2cqi; }
+.boat-scene .location-scene__art { inset: 20.05% auto auto 19.72%; width: 60.76%; height: 34%; }
+.location-scene__directions {
+  position: absolute;
+  inset: 56% 19% auto;
+  z-index: 5;
+  width: 62%;
+  text-align: center;
+}
+.boat-scene__nile { inset: 57.942% auto auto 0; z-index: 2; width: 99.961%; opacity: 1; }
+.boat-scene__boat { inset: 81.476% auto auto 56.156%; z-index: 5; width: 10.55%; }
+
+.car-scene > .floral--top-left { inset: 0.571% 0.292% auto auto; width: 34.835%; }
+.car-scene > .floral--top-right { inset: 51.301% 0.388% auto auto; width: 32.844%; }
+.car-scene__border { inset: 0.58% auto auto 0.068%; width: 21.031%; }
+.car-scene .scene__copy { inset: 4.6% 12% auto; }
+.car-scene .section-title { font-size: 11.6cqi; }
+.car-scene .scene__copy .formal-copy { margin-top: 1.2cqi; }
+.car-scene .location-scene__art { inset: 25.25% auto auto 19.72%; width: 62.55%; height: 30.85%; }
+.car-scene .location-scene__directions { inset-block-start: 59.5%; }
+.car-scene__route { inset: 69% auto auto 35%; z-index: 4; width: 39%; height: 23%; overflow: visible; }
+.car-scene__route path:first-child {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 0.02 0.045;
+}
+.car-scene__plane { fill: var(--ink); }
+.car-scene__car { inset: 86.086% auto auto 2.921%; z-index: 5; width: 34.786%; }
+
+/* Dress code */
+.dress-code { background: var(--paper); }
+.dress-code > .floral--top-left { inset: 0.509% 0.292% auto auto; width: 34.835%; }
+.dress-code > .floral--top-right { inset: 51.301% 0.388% auto auto; width: 32.844%; }
+.dress-code__border { inset: 0.619% auto auto 0.068%; width: 21.031%; }
+.dress-code .scene__copy { inset: 5.2% 14% auto; width: 72%; }
+.dress-code .section-title { font-size: 12.2cqi; }
+.dress-code__groups { position: absolute; inset: 0; display: block; }
+.dress-code__group { position: absolute; margin: 0; text-align: center; }
+.dress-code__group:first-child { inset: 18% auto auto 21%; width: 60%; }
+.dress-code__group:last-child { inset: 66.5% auto auto 16%; width: 72%; }
+.dress-code__group h3 { margin: 0 0 1.2cqi; font-size: 2cqi; }
+.dress-code__group img { width: 100%; max-height: none; margin: 0; object-fit: contain; }
+.dress-code__group:first-child img { width: 86.6%; margin-inline: auto; }
+.dress-code__group:last-child img { width: 96.8%; margin-inline: auto; }
+
+/* RSVP keeps the reference paper-and-florals hierarchy, with added room for the form. */
+.rsvp {
+  min-height: 54rem;
+  aspect-ratio: auto;
+  background: var(--paper);
+}
+.rsvp > .floral--top-left { inset: auto auto 0 0; width: 32.362%; }
+.rsvp > .floral--bottom-right { inset: auto 2.508% 0 auto; width: 37.821%; }
+.rsvp__floral--upper-left { inset: 0 auto auto 0; width: 44.769%; }
+.rsvp__floral--upper-right { inset: 0.508% 0.292% auto auto; width: 34.835%; }
+.rsvp .scene__inner { position: relative; min-height: inherit; }
+.rsvp__paper {
+  position: relative;
+  inset: auto;
+  z-index: 3;
+  width: 79%;
+  margin: 14% auto 12%;
+  padding: 8cqi 7cqi 7cqi;
+  display: block;
+  border-width: 2.2cqi;
+  text-align: center;
+}
+.rsvp-title { font-size: 10cqi; }
+.rsvp-note { margin-top: 4cqi; font-size: 5.7cqi; }
+.rsvp__paper > .info-copy { margin-top: 2.4cqi; font-size: 2.35cqi; }
+.rsvp-form { max-width: none; margin: 5cqi auto 0; font-size: 2.5cqi; }
+.rsvp-form label,
+.rsvp-form legend { font-size: 2.2cqi; }
+.rsvp-form__choice { font-size: max(0.82rem, 2.25cqi) !important; }
+.rsvp-form input[type="text"],
+.rsvp-form textarea { padding: 2.2cqi 0.4cqi; font-size: max(1rem, 2.5cqi); }
+.rsvp-form textarea { min-height: 18cqi; }
+.button { min-height: 11cqi; font-size: max(0.74rem, 2.1cqi); }
+.rsvp__signature { margin-top: 4cqi; font-size: 2.7cqi; }
+.rsvp__signature strong { font-size: 7cqi; }
+
+/* Arabic type scales retain the same visual hierarchy without squeezing letters. */
+html[lang="ar"] .opening__strapline text { font-size: 14px; }
+html[lang="ar"] .section-title { color: var(--ink); }
+html[lang="ar"] .display-name { font-size: 11.8cqi; line-height: 1.05; }
+html[lang="ar"] .opening__ampersand { margin: -1cqi 0; font-size: 7.5cqi; }
+html[lang="ar"] .section-title { font-size: 10.5cqi; line-height: 1.15; }
+html[lang="ar"] .formal-copy { font-size: 2.6cqi; line-height: 1.55; }
+html[lang="ar"] .info-copy { font-size: 2.4cqi; line-height: 1.55; }
+html[lang="ar"] .invitation__orange-title { font-size: 7.4cqi; line-height: 1; }
+html[lang="ar"] .invitation__names { font-size: 3.9cqi; line-height: 1.1; }
+html[lang="ar"] .invitation__details { font-size: 1.75cqi; line-height: 1.35; }
+html[lang="ar"] .invitation__closed-label { font-size: 8.5cqi; }
+html[lang="ar"] .celebration__rules { font-size: 2.35cqi; line-height: 1.55; }
+html[lang="ar"] .calendar { font-size: 1.8cqi; }
+html[lang="ar"] .calendar caption { font-size: 2.65cqi; }
+html[lang="ar"] .countdown__number { font-size: 5.8cqi; }
+html[lang="ar"] .countdown__label { font-size: 1.65cqi; }
+html[lang="ar"] .dress-code__group h3 { font-size: 2.35cqi; }
+html[lang="ar"] .rsvp-title { font-size: 8cqi; }
+html[lang="ar"] .rsvp-note { font-size: 5cqi; }
+html[lang="ar"] .rsvp-form,
+html[lang="ar"] .rsvp-form label,
+html[lang="ar"] .rsvp-form legend { font-size: max(0.78rem, 2.35cqi); }
+
+/* Layer choreography: source order, source easing, and per-layer staging. */
+.motion-ready .scene:not(.play) .section-title,
+.motion-ready .scene:not(.play) .formal-copy,
+.motion-ready .scene:not(.play) .info-copy,
+.motion-ready .scene:not(.play) .celebration__rules,
+.motion-ready .scene:not(.play) .celebration__child,
+.motion-ready .scene:not(.play) .map-frame,
+.motion-ready .scene:not(.play) .countdown,
+.motion-ready .scene:not(.play) .dress-code__group,
+.motion-ready .scene:not(.play) .boat-scene__nile,
+.motion-ready .scene:not(.play) .boat-scene__boat,
+.motion-ready .scene:not(.play) .car-scene__route,
+.motion-ready .scene:not(.play) .car-scene__car {
+  opacity: 0;
+}
+
+.motion-ready .scene.play .section-title { animation: motion-from-top 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.08s both; }
+.motion-ready .scene.play .formal-copy { animation: motion-from-bottom 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.15s both; }
+.motion-ready .scene.play .calendar,
+.motion-ready .scene.play .map-frame { animation: motion-scale-in 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.22s both; }
+.motion-ready .scene.play .info-copy { animation: motion-from-bottom 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.29s both; }
+.motion-ready .scene.play .countdown { animation: motion-from-bottom 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.36s both; }
+.motion-ready .celebration.play .celebration__rules { animation: motion-from-bottom 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.25s both; }
+.motion-ready .celebration.play .celebration__child { animation: motion-scale-in 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.36s both; }
+.motion-ready .dress-code.play .dress-code__group:first-child { animation: motion-scale-in 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.2s both; }
+.motion-ready .dress-code.play .dress-code__group:last-child { animation: motion-scale-in 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.34s both; }
+.motion-ready .boat-scene.play .boat-scene__nile { animation: motion-scale-in 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.38s both; }
+.motion-ready .boat-scene.play .boat-scene__boat { animation: motion-from-bottom 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.52s both; }
+.motion-ready .car-scene.play .car-scene__route { animation: motion-from-top 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.38s both; }
+.motion-ready .car-scene.play .car-scene__car { animation: motion-from-left 0.72s cubic-bezier(0.2, 0.78, 0.2, 1) 0.5s both; }
+
+.motion-ready .invitation:not(.play) .invitation__envelope-back,
+.motion-ready .invitation:not(.play) .invitation__envelope-front,
+.motion-ready .invitation:not(.play) .invitation__photo,
+.motion-ready .invitation:not(.play) .invitation__card-art,
+.motion-ready .invitation:not(.play) .invitation__card,
+.motion-ready .invitation:not(.play) .invitation__lilies,
+.motion-ready .invitation:not(.play) .invitation__amaranthus,
+.motion-ready .invitation:not(.play) .invitation__bouquet,
+.motion-ready .invitation:not(.play) .invitation__orange-title { opacity: 0; }
+
+.motion-ready .invitation.play .invitation__photo {
+  animation: invitation-photos-rise 0.33s cubic-bezier(0.16, 0.9, 0.22, 1) 1.77s both;
+}
+.motion-ready .invitation.play .invitation__lilies,
+.motion-ready .invitation.play .invitation__amaranthus,
+.motion-ready .invitation.play .invitation__bouquet {
+  animation: invitation-photos-rise 0.33s cubic-bezier(0.16, 0.9, 0.22, 1) 1.8s both;
+}
+.motion-ready .invitation.play .invitation__card-art,
+.motion-ready .invitation.play .invitation__card {
+  animation: invitation-card-rise 0.39s cubic-bezier(0.16, 0.9, 0.22, 1) 1.83s both;
+}
+
+/* The old grid breakpoints are intentionally neutralized by the reference canvas. */
+@media (min-width: 44rem) {
+  .scene { padding: 0; }
+  .scene__inner { display: block; max-width: none; }
+  .rsvp__paper { display: block; width: 79%; padding: 8cqi 7cqi 7cqi; text-align: center; }
+  .rsvp__paper > :not(.rsvp-form),
+  .rsvp__paper .rsvp-form { grid-column: auto; grid-row: auto; width: auto; margin-inline: auto; text-align: inherit; }
+  .rsvp__paper .rsvp-form { margin-top: 5cqi; }
+  .rsvp__paper .section-title,
+  .rsvp__paper .formal-copy,
+  .rsvp__paper .info-copy,
+  .rsvp__paper .rsvp__signature { margin-inline: auto; text-align: center; }
+}
+
+@media (orientation: landscape) and (max-height: 40rem) {
+  :root { --site-width: min(100vw, 34rem); }
+  .site { box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation__closed-paper,
+  .invitation__closed-label,
+  .invitation__seal { display: none !important; }
+
+  .invitation__envelope-back,
+  .invitation__envelope-front,
+  .invitation__photo,
+  .invitation__card-art,
+  .invitation__card,
+  .invitation__lilies,
+  .invitation__amaranthus,
+  .invitation__bouquet,
+  .invitation__orange-title { opacity: 1 !important; }
+}

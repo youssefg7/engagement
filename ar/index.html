@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8">
@@ -9,6 +9,7 @@
     <link rel="alternate" hreflang="ar" href="./">
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="../assets/css/site.css">
+    <link rel="stylesheet" href="../assets/css/composition.css">
     <script src="../assets/js/site.js" defer></script>
     <script src="../assets/js/rsvp-config.js" defer></script>
     <script src="../assets/js/rsvp.js" defer></script>
@@ -19,8 +20,12 @@
       <section class="scene opening" id="opening" data-scene="opening" aria-labelledby="opening-title">
         <img class="art-layer opening__garland" src="../assets/images/opening/top-floral-garland-8213bbc2.png" alt="" aria-hidden="true">
         <img class="floral floral--bottom-left" src="../assets/images/opening/bottom-left-floral-spray-fdbf2491.png" alt="" aria-hidden="true">
+        <img class="floral opening__border opening__border--left" src="../assets/images/opening/right-floral-border-a31743c9.png" alt="" aria-hidden="true">
+        <img class="floral opening__border opening__border--right" src="../assets/images/opening/left-floral-border-67005ac5.png" alt="" aria-hidden="true">
         <div class="opening__inner">
           <img class="art-layer opening__oval" src="../assets/images/opening/pink-oval-frame-75a621b7.png" alt="" aria-hidden="true">
+          <img class="art-layer opening__heart" src="../assets/images/opening/watercolor-heart-3e25f248.png" alt="" aria-hidden="true">
+          <img class="art-layer opening__divider" src="../assets/images/opening/heart-divider-21b3e2bc.png" alt="" aria-hidden="true">
           <img class="art-layer opening__nile" src="../assets/images/opening/nile-watercolor-6385927b.png" alt="" aria-hidden="true">
           <img class="art-layer opening__boat" src="../assets/images/opening/sailboat-791234f6.png" alt="" aria-hidden="true">
           <span class="art-layer opening__bird opening__bird--1" aria-hidden="true"><img src="../assets/images/opening/hummingbird-1e6a7357.gif" alt=""></span>
@@ -48,12 +53,21 @@
       <section class="scene invitation" id="invitation" data-scene="invitation" aria-labelledby="invitation-title">
         <img class="floral floral--top-right" src="../assets/images/invitation/top-right-floral-corner-dde70e5d.png" alt="" aria-hidden="true">
         <img class="floral floral--bottom-left" src="../assets/images/invitation/left-floral-corner-27721d43.png" alt="" aria-hidden="true">
-        <div class="scene__inner scene__inner--split">
-          <div class="scene__art invitation__stage" data-motion="envelope">
+        <img class="floral invitation__floral--upper" src="../assets/images/invitation/upper-floral-spray-333dac5c.png" alt="" aria-hidden="true">
+        <img class="floral invitation__floral--center" src="../assets/images/invitation/center-floral-spray-018befc3.png" alt="" aria-hidden="true">
+        <div class="scene__inner">
+          <div class="invitation__stage">
             <img class="art-layer invitation__closed-paper" src="../assets/images/invitation/closed-envelope-paper-1038a178.png" alt="" aria-hidden="true">
             <p class="invitation__orange-title" aria-hidden="true">يوسف <span>و</span> لارا</p>
             <img class="art-layer invitation__envelope-back" src="../assets/images/invitation/open-envelope-back-6820e826.png" alt="" aria-hidden="true">
-            <article class="invitation__card">
+            <img class="art-layer invitation__envelope-front" src="../assets/images/invitation/couple-polaroid-bcf90605.png" alt="" aria-hidden="true">
+            <img class="art-layer invitation__photo invitation__photo--left" src="../assets/images/invitation/couple-photo-stairs-80d43926.png" alt="صورة بالأبيض والأسود للثنائي لارا ويوسف على الدرج">
+            <img class="art-layer invitation__photo invitation__photo--right" src="../assets/images/invitation/invitation-card-pink-fill-b3bde139.png" alt="صورة بالأبيض والأسود للثنائي لارا ويوسف">
+            <div class="invitation__card-art" data-motion="invitation-card">
+              <img class="art-layer invitation__card-fill" src="../assets/images/invitation/invitation-card-lace-frame-f5091bbc.png" alt="" aria-hidden="true">
+              <img class="art-layer invitation__card-lace" src="../assets/images/invitation/open-envelope-front-34ef9ef7.png" alt="" aria-hidden="true">
+            </div>
+            <article class="invitation__card" data-motion="invitation-card">
               <h2 class="invitation__names" id="invitation-title">
                 يوسف جورج
                 <span class="invitation__and">و</span>
@@ -66,13 +80,11 @@
                 قاعة ريفانا للأفراح
               </p>
             </article>
-            <img class="art-layer invitation__envelope-front" src="../assets/images/invitation/open-envelope-front-34ef9ef7.png" alt="" aria-hidden="true">
+            <img class="art-layer invitation__lilies" src="../assets/images/invitation/calla-lilies-03f2f559.png" alt="" aria-hidden="true">
+            <img class="art-layer invitation__amaranthus" src="../assets/images/invitation/hanging-amaranthus-062717a4.png" alt="" aria-hidden="true">
+            <img class="art-layer invitation__bouquet" src="../assets/images/invitation/bouquet-ee7bd945.png" alt="" aria-hidden="true">
             <img class="art-layer invitation__seal" src="../assets/images/invitation/wax-seal-a0a76485.png" alt="" aria-hidden="true">
             <p class="invitation__closed-label" aria-hidden="true">أنتم مدعوون!</p>
-          </div>
-          <div class="scene__art" data-motion="invitation-photo">
-            <img class="invitation__photo" src="../assets/images/invitation/couple-photo-stairs-80d43926.png" alt="صورة بالأبيض والأسود للثنائي لارا ويوسف">
-            <img class="art-layer invitation__bouquet" src="../assets/images/invitation/bouquet-ee7bd945.png" alt="" aria-hidden="true">
           </div>
         </div>
       </section>
@@ -80,9 +92,11 @@
       <section class="scene celebration" id="celebration" data-scene="celebration" aria-labelledby="celebration-title">
         <img class="floral floral--top-right" src="../assets/images/celebration/top-right-floral-corner-b389ef0e.png" alt="" aria-hidden="true">
         <img class="floral floral--bottom-left" src="../assets/images/celebration/left-floral-corner-0f9cb62d.png" alt="" aria-hidden="true">
-        <div class="scene__inner scene__inner--split-reverse">
-          <div class="scene__copy" data-motion="scene-copy">
-            <h2 class="section-title" id="celebration-title">الاحتفال</h2>
+        <img class="floral celebration__floral--left" src="../assets/images/celebration/left-floral-spray-5261e0f9.png" alt="" aria-hidden="true">
+        <img class="floral celebration__floral--right" src="../assets/images/celebration/right-floral-spray-ede374e5.png" alt="" aria-hidden="true">
+        <div class="scene__inner">
+          <div class="scene__copy">
+            <h2 class="section-title" id="celebration-title">الاحتفال<span class="visually-hidden"> — للكبار</span></h2>
             <p class="formal-copy">ليلة للكبار،<br>وأحلام سعيدة للصغار.</p>
             <ul class="celebration__rules">
               <li>تتوفر جليسات للأطفال</li>
@@ -90,7 +104,7 @@
               <li>للكبار فقط، من فضلكم!</li>
             </ul>
           </div>
-          <div class="scene__art" data-motion="scene-art">
+          <div class="scene__art">
             <img class="art-layer celebration__child" src="../assets/images/celebration/sleeping-child-56a36124.png" alt="طفل ينام بهدوء في سريره">
           </div>
         </div>
@@ -99,16 +113,11 @@
       <section class="scene date-scene" id="date" data-scene="date" aria-labelledby="date-title">
         <img class="floral floral--top-left" src="../assets/images/date/upper-left-floral-spray-e108e8c3.png" alt="" aria-hidden="true">
         <img class="floral floral--bottom-right" src="../assets/images/date/right-floral-corner-5ad6c714.png" alt="" aria-hidden="true">
+        <img class="floral date__floral--upper-right" src="../assets/images/date/upper-right-floral-spray-cc07ab07.png" alt="" aria-hidden="true">
+        <img class="floral date__floral--lower-left" src="../assets/images/date/left-floral-corner-4ae63ffa.png" alt="" aria-hidden="true">
         <div class="scene__inner date-layout">
-          <div class="scene__copy" data-motion="scene-copy">
+          <div class="scene__copy">
             <h2 class="section-title" id="date-title">الموعد</h2>
-            <p class="formal-copy"><time datetime="2026-10-01">١ أكتوبر ٢٠٢٦</time></p>
-            <div class="countdown" data-countdown data-target="2026-10-01T19:00:00+03:00" aria-label="الوقت المتبقي حتى الخطوبة">
-              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="days">٠٠</strong><span class="countdown__label">أيام</span></span>
-              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="hours">٠٠</strong><span class="countdown__label">ساعات</span></span>
-              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="minutes">٠٠</strong><span class="countdown__label">دقائق</span></span>
-              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="seconds">٠٠</strong><span class="countdown__label">ثوانٍ</span></span>
-            </div>
           </div>
           <table class="calendar" aria-label="تقويم شهر أكتوبر ٢٠٢٦">
             <caption>أكتوبر ٢٠٢٦</caption>
@@ -121,68 +130,86 @@
               <tr><td>٢٥</td><td>٢٦</td><td>٢٧</td><td>٢٨</td><td>٢٩</td><td>٣٠</td><td>٣١</td></tr>
             </tbody>
           </table>
+          <p class="formal-copy date-layout__date"><time datetime="2026-10-01">١ أكتوبر ٢٠٢٦</time></p>
+          <div class="countdown" data-countdown data-target="2026-10-01T19:00:00+03:00" role="timer" aria-label="الوقت المتبقي حتى الخطوبة">
+              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="days">٠٠</strong><span class="countdown__label">أيام</span></span>
+              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="hours">٠٠</strong><span class="countdown__label">ساعات</span></span>
+              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="minutes">٠٠</strong><span class="countdown__label">دقائق</span></span>
+              <span class="countdown__unit"><strong class="countdown__number" data-countdown-unit="seconds">٠٠</strong><span class="countdown__label">ثوانٍ</span></span>
+          </div>
         </div>
       </section>
 
       <section class="scene location-scene ceremony-scene" id="ceremony" data-scene="ceremony" aria-labelledby="ceremony-title">
         <img class="floral floral--top-left" src="../assets/images/ceremony/left-floral-corner-0d804b0b.png" alt="" aria-hidden="true">
         <img class="floral floral--bottom-right" src="../assets/images/ceremony/right-floral-spray-6ff9ee5a.png" alt="" aria-hidden="true">
-        <div class="scene__inner scene__inner--split">
-          <div class="scene__copy" data-motion="scene-copy">
+        <img class="floral ceremony__floral--upper-right" src="../assets/images/ceremony/lower-left-floral-spray-9e5f480b.png" alt="" aria-hidden="true">
+        <img class="floral ceremony__floral--lower-right" src="../assets/images/ceremony/right-floral-corner-0087e704.png" alt="" aria-hidden="true">
+        <div class="scene__inner">
+          <div class="scene__copy">
             <h2 class="section-title" id="ceremony-title">المراسم</h2>
-            <address class="formal-copy">كنيسة القديس الأنبا أنطونيوس، المعادي</address>
-            <p class="info-copy"><time datetime="2026-10-01T19:00:00+03:00">٧ مساءً</time>، الكنيسة الرئيسية</p>
           </div>
-          <div class="scene__art location-scene__art" data-motion="scene-art">
+          <div class="scene__art location-scene__art">
             <div class="map-frame">
               <iframe title="خريطة كنيسة مراسم الخطوبة" src="https://www.google.com/maps?q=The%20Great%20St.%20Antony%20Church%2C%20Zahraa%20El%20Maadi%2C%20Cairo%2C%20Egypt&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+          </div>
+          <div class="location-scene__details">
+            <address class="formal-copy">كنيسة القديس الأنبا أنطونيوس، المعادي</address>
+            <p class="info-copy"><time datetime="2026-10-01T19:00:00+03:00">٧ مساءً</time>، الكنيسة الرئيسية</p>
           </div>
         </div>
       </section>
 
       <section class="scene location-scene boat-scene" id="reception-boat" data-scene="reception-boat" aria-labelledby="boat-title">
         <img class="floral floral--top-right" src="../assets/images/reception-boat/top-right-floral-corner-cea9d175.png" alt="" aria-hidden="true">
-        <div class="scene__inner scene__inner--split-reverse">
-          <div class="scene__copy" data-motion="scene-copy">
-            <h2 class="section-title" id="boat-title">الاحتفال</h2>
+        <img class="floral boat-scene__border" src="../assets/images/reception-boat/left-floral-border-aa4ca07b.png" alt="" aria-hidden="true">
+        <div class="scene__inner">
+          <div class="scene__copy">
+            <h2 class="section-title" id="boat-title">الاحتفال<span class="visually-hidden"> — الوصول بالمركب</span></h2>
             <address class="formal-copy">قاعة ريفانا للأفراح</address>
-            <p class="info-copy">اتبعوا هذا الموقع للوصول إلى القاعة بالمركب.</p>
           </div>
-          <div class="scene__art location-scene__art" data-motion="scene-art">
+          <div class="scene__art location-scene__art">
             <div class="map-frame">
               <iframe title="خريطة الوصول إلى قاعة ريفانا بالمركب" src="https://www.google.com/maps?q=Revana%20wedding%20venue%20by%20boat%2C%20Maadi%20Al%20Khabiri%20Ash%20Sharqeyah%2C%20Maadi%2C%20Egypt&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <img class="art-layer boat-scene__nile" src="../assets/images/reception-boat/nile-watercolor-59d15642.png" alt="" aria-hidden="true">
-            <img class="art-layer boat-scene__boat" src="../assets/images/reception-boat/sailboat-9effaad6.png" alt="" aria-hidden="true">
           </div>
+          <p class="info-copy location-scene__directions">اتبعوا هذا الموقع للوصول إلى القاعة بالمركب.</p>
+          <img class="art-layer boat-scene__nile" src="../assets/images/reception-boat/nile-watercolor-59d15642.png" alt="" aria-hidden="true">
+          <img class="art-layer boat-scene__boat" src="../assets/images/reception-boat/sailboat-9effaad6.png" alt="" aria-hidden="true">
         </div>
       </section>
 
       <section class="scene location-scene car-scene" id="reception-car" data-scene="reception-car" aria-labelledby="car-title">
         <img class="floral floral--top-left" src="../assets/images/reception-car/upper-left-floral-spray-e71a59bf.png" alt="" aria-hidden="true">
         <img class="floral floral--top-right" src="../assets/images/reception-car/top-right-floral-corner-122ab912.png" alt="" aria-hidden="true">
-        <div class="scene__inner scene__inner--split">
-          <div class="scene__copy" data-motion="scene-copy">
-            <h2 class="section-title" id="car-title">الاحتفال</h2>
+        <img class="floral car-scene__border" src="../assets/images/reception-car/right-floral-border-e2547c6b.png" alt="" aria-hidden="true">
+        <div class="scene__inner">
+          <div class="scene__copy">
+            <h2 class="section-title" id="car-title">الاحتفال<span class="visually-hidden"> — الوصول بالسيارة</span></h2>
             <address class="formal-copy">قاعة ريفانا للأفراح</address>
-            <p class="info-copy">اتبعوا هذا الموقع للوصول إلى القاعة بالسيارة.</p>
           </div>
-          <div class="scene__art location-scene__art" data-motion="scene-art">
+          <div class="scene__art location-scene__art">
             <div class="map-frame">
               <iframe title="خريطة الوصول إلى قاعة ريفانا بالسيارة" src="https://www.google.com/maps?q=Revana%20Wedding%20on%20the%20Nile%2C%20Manil%20Shihah%2C%20Abu%20El%20Numrus%2C%20Giza%20Governorate%2C%20Egypt&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <img class="art-layer car-scene__car" src="../assets/images/reception-car/pink-car-8eaff23b.png" alt="" aria-hidden="true">
           </div>
+          <p class="info-copy location-scene__directions">اتبعوا هذا الموقع للوصول إلى القاعة بالسيارة.</p>
+          <svg class="art-layer car-scene__route" viewBox="0 0 200 210" aria-hidden="true">
+            <path d="M149 12c-10 20-1 32 13 43 22 17 15 42-12 47-35 7-73-12-99 7-26 18-7 45 29 46 33 1 76-11 91 9 11 16-5 30-29 35" pathLength="1"></path>
+            <path class="car-scene__plane" d="m135 5 25 7-10 5 1 10-5 2-5-9-9 3-4-4 8-6z"></path>
+          </svg>
+          <img class="art-layer car-scene__car" src="../assets/images/reception-car/pink-car-8eaff23b.png" alt="" aria-hidden="true">
         </div>
       </section>
 
       <section class="scene dress-code" id="dress-code" data-scene="dress-code" aria-labelledby="dress-code-title">
         <img class="floral floral--top-left" src="../assets/images/dress-code/upper-left-floral-spray-139c92ab.png" alt="" aria-hidden="true">
         <img class="floral floral--top-right" src="../assets/images/dress-code/top-right-floral-corner-0cf503bd.png" alt="" aria-hidden="true">
+        <img class="floral dress-code__border" src="../assets/images/dress-code/right-floral-border-620ee063.png" alt="" aria-hidden="true">
         <div class="scene__inner">
-          <div class="scene__copy" data-motion="scene-copy"><h2 class="section-title" id="dress-code-title">الملابس</h2></div>
-          <div class="dress-code__groups" data-motion="scene-art">
+          <div class="scene__copy"><h2 class="section-title" id="dress-code-title">الملابس</h2></div>
+          <div class="dress-code__groups">
             <article class="dress-code__group">
               <h3>للسيدات</h3>
               <img src="../assets/images/dress-code/womens-dress-examples-85dd7a02.png" alt="اقتراحات لفساتين رسمية ملوّنة للسيدات">
@@ -198,6 +225,8 @@
       <section class="scene rsvp" id="rsvp" data-scene="rsvp" aria-labelledby="rsvp-title">
         <img class="floral floral--top-left" src="../assets/images/rsvp/left-floral-corner-541d4c8e.png" alt="" aria-hidden="true">
         <img class="floral floral--bottom-right" src="../assets/images/rsvp/right-floral-corner-2240e715.png" alt="" aria-hidden="true">
+        <img class="floral rsvp__floral--upper-left" src="../assets/images/rsvp/upper-left-floral-spray-e00e2adc.png" alt="" aria-hidden="true">
+        <img class="floral rsvp__floral--upper-right" src="../assets/images/rsvp/right-floral-spray-2a3e4dd0.png" alt="" aria-hidden="true">
         <div class="scene__inner">
           <article class="rsvp__paper" data-motion="rsvp-card">
             <h2 class="section-title rsvp-title" id="rsvp-title">تأكيد الحضور</h2>
@@ -206,6 +235,7 @@
             <p class="info-copy rsvp__deadline">يرجى تأكيد الحضور قبل <time datetime="2026-09-15">١٥.٠٩.٢٠٢٦</time>.</p>
             <form class="rsvp-form" data-rsvp-form method="post" accept-charset="UTF-8" aria-describedby="rsvp-form-status">
               <fieldset data-rsvp-fields disabled>
+                <legend class="visually-hidden">بيانات تأكيد الحضور</legend>
                 <p class="rsvp-form__field"><label for="full-name">الاسم بالكامل</label><input id="full-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required></p>
                 <fieldset class="rsvp-form__options">
                   <legend>هل ستحضرون؟</legend>

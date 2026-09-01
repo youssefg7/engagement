@@ -545,6 +545,15 @@ Completion condition: every subsequent push to `main` automatically publishes th
 
 ### Task 11 — Final visual and interaction review
 
+Status: **Complete (reference-composition correction, 2026-09-01).** The first rebuilt layout used generic full-viewport editorial grids, which changed the source's scene geometry, visual order, and animation grouping. The correction pass restores a shared 502.1245 × 767.625 reference canvas for the eight non-form scenes, reuses the original percentage anchors for extracted artwork, keeps all meaningful text live, and retains a taller RSVP scene for the added form. Short landscape viewports keep the readable portrait canvas and scroll vertically, matching the preserved source's non-cropped behavior rather than shrinking it into illegibility.
+
+- Invitation photographs, lace card, envelope layers, lilies, bouquet, and florals now share one collage stage and follow the preserved closed/open timing.
+- Date, ceremony, boat, and car content now follows the original title → map/calendar → supporting details order.
+- Missing floral side layers, the car route, and the source-positioned Nile/boat artwork have been restored.
+- English and Arabic use the same art anchors while retaining their distinct live-text font roles.
+
+Final captures are stored in [`output/playwright/task-11/reference-pass/`](output/playwright/task-11/reference-pass/). Scripted browser checks covered both routes at 390 × 844, 844 × 390, 768 × 1024, 1024 × 768, and 1440 × 900. All combinations retained nine scenes, the reference ratio for the first eight scenes, zero horizontal overflow, no broken local images, and no console errors. Focused checks also verified the closed and open envelope states, reduced-motion open state, completed boat crossing, continuing bird orbit, live countdown updates, three maps, enabled/focusable RSVP fields, loaded web fonts, and selectable invitation text in both languages.
+
 - Review all nine scenes in both languages.
 - Check mobile portrait, mobile landscape, tablet, laptop, and wide desktop.
 - Verify envelope, birds, boat, entrance animations, countdown, maps, and RSVP.
