@@ -1,4 +1,12 @@
 .DS_Store
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.service-account.json
+.wrangler/
 .playwright-cli/
 output/playwright/cli-session/
 output/asset-audit/

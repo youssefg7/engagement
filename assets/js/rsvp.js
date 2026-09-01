@@ -27,9 +27,9 @@
     },
   }[language];
 
+  const provider = String(window.ENGAGEMENT_RSVP?.provider || "").trim();
   const endpoint = String(window.ENGAGEMENT_RSVP?.endpoint || "").trim();
-  const endpointIsReady = window.ENGAGEMENT_RSVP?.provider === "formsubmit"
-    && /^https:\/\/formsubmit\.co\/ajax\/[A-Za-z0-9@._%+-]+$/.test(endpoint);
+  const endpointIsReady = endpointMatchesProvider(provider, endpoint);
   const fields = form.querySelector("[data-rsvp-fields]");
   const button = form.querySelector("[data-rsvp-submit]");
   const status = form.querySelector("[data-rsvp-status]");
@@ -134,4 +134,17 @@
       setStatus(copy.failure, "error");
     }
   });
+
+  function endpointMatchesProvider(selectedProvider, selectedEndpoint) {
+    if (selectedProvider === "google-sheets-worker") {
+      try {
+        const url = new URL(selectedEndpoint);
+        return url.protocol === "https:" && url.pathname.endsWith("/rsvp");
+      } catch {
+        return false;
+      }
+    }
+
+    return false;
+  }
 })();

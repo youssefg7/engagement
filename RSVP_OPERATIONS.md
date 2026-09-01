@@ -1,52 +1,74 @@
 # RSVP operations guide
 
-The invitation keeps its custom English and Arabic RSVP controls. FormSubmit delivers submissions to the couple's private inbox without displaying provider UI or requiring a backend in the GitHub Pages repository.
+The invitation keeps its custom English and Arabic RSVP controls. A small Cloudflare Worker validates submissions and appends them to the couple's private Google Sheet without displaying third-party form UI.
 
 ## Links
 
-- Provider documentation: <https://formsubmit.co/documentation>
-- Active public endpoint: <https://formsubmit.co/ajax/04935cacc23651fcc5774b9d37073cea>
+- RSVP spreadsheet: <https://docs.google.com/spreadsheets/d/1I991DlUFqCVRogBcmf5jFwY0pRwyN0HJUj3ebgfQ0aU/edit>
+- Worker health check: <https://engagement-rsvp.engagement-website.workers.dev/health>
+- Public submission endpoint: <https://engagement-rsvp.engagement-website.workers.dev/rsvp>
 - Temporary Google Form fallback: <https://forms.gle/daqf2ug4TypLtKwH8>
 
-## Configured endpoint
+## Where responses appear
 
-The owner activated FormSubmit for the private notification inbox. The randomized route is stored in `assets/js/rsvp-config.js`; it is public routing data but does not reveal the destination email address.
+Open the spreadsheet and select the `RSVP Responses` tab. The Worker creates this tab and its headers automatically. Each accepted response records:
 
-Do not replace the randomized route with the destination email in committed code. Do not send an account password, recovery code, mailbox access, or messages containing private guest submissions.
-
-## Verified integration
-
-- The FormSubmit randomized AJAX endpoint is configured in `assets/js/rsvp-config.js`.
-- The activated endpoint returned `success: true` from the deployed site's origin on 1 September 2026.
-- Real English and Arabic browser submissions on the public pages showed the correct localized success state without provider UI or console errors.
-- A blocked-network simulation verified the localized error state, preserved values, re-enabled submit button, and Google Form fallback.
-- These FormSubmit test notifications can be deleted after receipt is confirmed: `Codex FormSubmit integration test - please delete`, `Codex live English test - please delete`, and `اختبار فورم سبمت العربي - يرجى الحذف`.
-- Two older Formspree test responses may also be deleted: `Codex English integration test — please delete` and `اختبار كوديكس العربي — يرجى الحذف`.
-
-## What the form sends
-
+- Server receipt time.
 - Full name.
 - Attendance: `Attending` or `Not attending`.
 - Optional message.
 - Route language (`en` or `ar`).
-- Submission time, invitation page URL, and a generated submission ID.
-- A hidden `_honey` field for basic bot filtering.
-- FormSubmit formatting and invisible-CAPTCHA settings (`_template=table`, `_captcha=false`).
+- Browser submission time, invitation page URL, and generated submission ID.
+- Browser user agent for limited delivery troubleshooting.
 
-No guest response is written to GitHub, browser storage, a URL query string, or analytics.
+The rows named `Codex integration check` and `Codex production Worker check` are deployment tests and may be deleted.
+
+## Architecture and privacy
+
+- `assets/js/rsvp-config.js` contains only the public Worker URL.
+- `worker/src/index.js` contains the editable validation and Sheets-writing logic.
+- The Google service-account JSON is stored locally in the ignored `.env` file and remotely as the Cloudflare Worker secret `SERVICE_ACCOUNT_KEY`.
+- The Cloudflare API token is used only by Wrangler. It must not be uploaded as a Worker secret.
+- The spreadsheet is shared as Editor only with `engagement-rsvp-writer@engagement-rsvp-507313.iam.gserviceaccount.com` and the intended owners.
+- Guest responses are not stored in GitHub, browser storage, query strings, or analytics.
+
+The Worker accepts requests only from `https://youssefg7.github.io`, validates lengths and attendance values, treats the hidden `_honey` field as a spam trap, and writes cell values as raw data. Text beginning with a spreadsheet formula character is escaped before storage.
+
+## Deploy Worker changes
+
+From the repository root:
+
+```sh
+set -a
+source .env
+set +a
+npx wrangler deploy --config worker/wrangler.jsonc
+printf '%s' "$SERVICE_ACCOUNT_KEY" | npx wrangler secret put SERVICE_ACCOUNT_KEY --config worker/wrangler.jsonc
+```
+
+The second command is required only when the Google credential changes or a new Worker is created.
+
+Commits to `main` that change `worker/` are deployed automatically by `.github/workflows/worker.yml`. The repository Actions secret `CLOUDFLARE_API_TOKEN` authorizes that workflow. Cloudflare preserves `SERVICE_ACCOUNT_KEY` across these code deployments.
+
+## Rotate credentials
+
+1. Create a new JSON key under the Google service account.
+2. Replace `SERVICE_ACCOUNT_KEY` in the ignored `.env` file.
+3. Upload it with `wrangler secret put` using the command above.
+4. Submit one clearly labeled test RSVP and confirm the row appears.
+5. Delete the previous Google service-account key only after the new one works.
+6. Revoke and replace the Cloudflare API token separately if it is exposed; it is not required by the running Worker.
 
 ## Do
 
-- Keep the notification inbox private.
-- Check the inbox and spam folder after the first deployed test.
-- Keep a separate durable record of accepted RSVPs; FormSubmit's submission archive is retained for 30 days.
-- Keep the Google Form fallback available until the deployed custom form is confirmed.
+- Review the `RSVP Responses` tab periodically.
+- Keep the Sheet and service-account credential private.
+- Confirm a Sheet row exists before treating a browser success message as final verification during maintenance.
+- Keep the Google Form link as a JavaScript-disabled or network-error fallback until the couple decides it is unnecessary.
 
 ## Do not
 
 - Do not embed Google Forms UI; the project owner explicitly rejected that design.
-- Do not place the notification email, guest data, or mailbox credentials in the repository.
-- Do not remove the honeypot, submission locking, or inline error fallback.
-- Do not treat a browser success message as final verification until the notification or dashboard entry is observed.
-
-FormSubmit documents unlimited forms and submissions. It supports cross-origin AJAX submission and sends each accepted response to the private inbox. The site checks both the HTTP status and FormSubmit's JSON `success` value before showing its localized success state.
+- Do not commit `.env`, service-account JSON, API tokens, or guest data.
+- Do not remove submission locking, validation, the honeypot, or localized error handling.
+- Do not grant the service account broad project roles. Sharing this individual spreadsheet as Editor is sufficient.

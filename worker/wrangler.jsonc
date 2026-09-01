@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "engagement-rsvp",
+  "account_id": "b37d5559a78c7a3912edfb81b57bf7d8",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "vars": {
+    "SPREADSHEET_ID": "1I991DlUFqCVRogBcmf5jFwY0pRwyN0HJUj3ebgfQ0aU",
+    "SHEET_NAME": "RSVP Responses",
+    "ALLOWED_ORIGINS": "https://youssefg7.github.io"
+  }
+}

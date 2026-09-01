@@ -20,3 +20,7 @@ python3 -m http.server 4173
 Then open `http://127.0.0.1:4173/` and `http://127.0.0.1:4173/ar/`.
 
 See `IMPLEMENTATION_REFERENCE.md` for the implementation sequence and preservation rules.
+
+## RSVP service
+
+The custom bilingual form posts to a small Cloudflare Worker at `worker/`. The Worker authenticates to Google with a private service-account secret and appends responses to the private `RSVP Responses` tab in Google Sheets. See `RSVP_OPERATIONS.md` for deployment and maintenance instructions.

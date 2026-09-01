@@ -324,7 +324,7 @@ For navigation clarity, official venue names may appear in Arabic followed by En
 
 ### 9.1 Recommended approach
 
-Keep the custom bilingual HTML form and submit it to a FormSubmit randomized AJAX endpoint with browser `fetch`. FormSubmit supports cross-origin AJAX submissions and documents unlimited forms and submissions. Its randomized route keeps the destination email out of the public source. This preserves the invitation's own controls and inline states without embedding provider UI or storing a secret in GitHub.
+Keep the custom bilingual HTML form and submit it with browser `fetch` to a small Cloudflare Worker. The Worker validates the request and writes directly to a private Google Sheet through a service account. This preserves the invitation's own controls and inline states without embedding provider UI or exposing Google credentials in GitHub Pages.
 
 Required fields:
 
@@ -343,16 +343,17 @@ Optional field:
 - Show localized ready, submitting, success, validation-error, and network-error states inline.
 - Include language, submission time, page URL, submission ID, and a honeypot in each request.
 - Do not place guest names or messages in the repository, localStorage, URL query strings, analytics, or public static files.
-- Keep a localized link to the existing Google Form while the FormSubmit endpoint is unavailable.
+- Keep a localized link to the existing Google Form while the Worker endpoint is unavailable.
 
 ### 9.3 Required setup dependency
 
 Before enabling the live endpoint:
 
-- Activate FormSubmit using the couple's chosen notification inbox.
-- Replace the email route with the randomized endpoint in the form `https://formsubmit.co/ajax/{randomized_route}` in `assets/js/rsvp-config.js` before committing.
-- Keep the destination email and notification inbox private.
-- Verify one English and one Arabic submission reaches the destination before deployment.
+- Create a Google service account and share only the RSVP spreadsheet with its `client_email` as Editor.
+- Store the complete service-account JSON locally in ignored `.env` and remotely as the Cloudflare Worker secret `SERVICE_ACCOUNT_KEY`.
+- Deploy `worker/src/index.js` and set its HTTPS `/rsvp` URL in `assets/js/rsvp-config.js`.
+- Keep Google credentials, Cloudflare credentials, and guest data private.
+- Verify one English and one Arabic submission reaches the `RSVP Responses` tab before considering the migration complete.
 
 The existing public Google Form remains the temporary fallback: <https://forms.gle/daqf2ug4TypLtKwH8>. Owner operating instructions are in [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
 
@@ -379,7 +380,7 @@ Use the current official major versions at implementation time for:
 
 Add `.nojekyll` so the static directory is served directly.
 
-Do not place RSVP secrets, private guest data, or credentials in workflow files. The FormSubmit randomized route is public routing data; notification emails, mailbox credentials, and submissions are private.
+Do not place RSVP secrets, private guest data, or credentials in workflow files. The Worker URL is public routing data; Google service-account credentials, Cloudflare credentials, and submissions are private.
 
 ## 11. Ordered implementation tasks
 
@@ -522,7 +523,7 @@ Completion condition: `/ar/` is complete, readable, and visually equivalent in h
 
 ### Task 9 — Add RSVP submission
 
-Status: **Complete (migrated to FormSubmit 2026-09-01).** The custom bilingual form submits to FormSubmit through an activated randomized AJAX route using a small local Vanilla JS handler, preserving the invitation's visual design with no provider UI. Both routes provide native validation, localized ready/submitting/success/failure states, submission locking, a provider-compatible honeypot, language and diagnostic metadata, and the existing Google Form fallback. The handler checks FormSubmit's JSON acceptance value as well as HTTP status so an activation or provider error cannot appear as a successful RSVP. The private route accepted an integration request from the deployed site's origin; browser verification covers both language routes. See [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
+Status: **Complete (migrated to Cloudflare Worker + Google Sheets 2026-09-01).** The custom bilingual form submits through a small Vanilla JS handler to a Cloudflare Worker, preserving the invitation's visual design with no provider UI. The Worker authenticates with a private Google service-account secret and appends responses to the private `RSVP Responses` tab. Both routes provide native validation, localized ready/submitting/success/failure states, submission locking, a honeypot, language and diagnostic metadata, and the existing Google Form fallback. The deployed endpoint passed direct CORS and Sheets-write verification before the public route was switched. See [`RSVP_OPERATIONS.md`](RSVP_OPERATIONS.md).
 
 - Select a submission provider after comparing hosted forms, Google Sheets-based approaches, and small serverless endpoints, then connect the on-page form.
 - Add validation and submission states.
