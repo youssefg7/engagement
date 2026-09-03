@@ -1,0 +1,397 @@
+{
+  "settings": {
+    "scale": 2,
+    "filter": "Mitchell",
+    "unsharp": "0x0.65+0.4+0.025",
+    "maxByteRatio": 1.8
+  },
+  "assets": [
+    {
+      "source": "assets/images/opening/top-floral-garland-8213bbc2.png",
+      "output": "assets/images/refined/top-floral-garland-8213bbc2-2x.webp",
+      "width": 864,
+      "height": 292,
+      "quality": 94,
+      "originalBytes": 65176,
+      "bytes": 107932
+    },
+    {
+      "source": "assets/images/opening/bottom-left-floral-spray-fdbf2491.png",
+      "output": "assets/images/refined/bottom-left-floral-spray-fdbf2491-2x.webp",
+      "width": 390,
+      "height": 524,
+      "quality": 94,
+      "originalBytes": 47454,
+      "bytes": 81504
+    },
+    {
+      "source": "assets/images/opening/right-floral-border-a31743c9.png",
+      "output": "assets/images/refined/right-floral-border-a31743c9-2x.webp",
+      "width": 218,
+      "height": 1088,
+      "quality": 94,
+      "originalBytes": 82448,
+      "bytes": 134532
+    },
+    {
+      "source": "assets/images/opening/left-floral-border-67005ac5.png",
+      "output": "assets/images/refined/left-floral-border-67005ac5-2x.webp",
+      "width": 222,
+      "height": 1240,
+      "quality": 94,
+      "originalBytes": 106078,
+      "bytes": 167920
+    },
+    {
+      "source": "assets/images/opening/nile-watercolor-6385927b.png",
+      "output": "assets/images/refined/nile-watercolor-6385927b-2x.webp",
+      "width": 1000,
+      "height": 436,
+      "quality": 94,
+      "originalBytes": 139316,
+      "bytes": 117578
+    },
+    {
+      "source": "assets/images/opening/sailboat-791234f6.png",
+      "output": "assets/images/refined/sailboat-791234f6-2x.webp",
+      "width": 222,
+      "height": 426,
+      "quality": 94,
+      "originalBytes": 20702,
+      "bytes": 23374
+    },
+    {
+      "source": "assets/images/invitation/top-right-floral-corner-dde70e5d.png",
+      "output": "assets/images/refined/top-right-floral-corner-dde70e5d-2x.webp",
+      "width": 424,
+      "height": 616,
+      "quality": 94,
+      "originalBytes": 68408,
+      "bytes": 108610
+    },
+    {
+      "source": "assets/images/invitation/left-floral-corner-27721d43.png",
+      "output": "assets/images/refined/left-floral-corner-27721d43-2x.webp",
+      "width": 328,
+      "height": 800,
+      "quality": 94,
+      "originalBytes": 74556,
+      "bytes": 116764
+    },
+    {
+      "source": "assets/images/invitation/upper-floral-spray-333dac5c.png",
+      "output": "assets/images/refined/upper-floral-spray-333dac5c-2x.webp",
+      "width": 284,
+      "height": 378,
+      "quality": 90,
+      "originalBytes": 31372,
+      "bytes": 51984
+    },
+    {
+      "source": "assets/images/invitation/center-floral-spray-018befc3.png",
+      "output": "assets/images/refined/center-floral-spray-018befc3-2x.webp",
+      "width": 390,
+      "height": 524,
+      "quality": 94,
+      "originalBytes": 47570,
+      "bytes": 81764
+    },
+    {
+      "source": "assets/images/invitation/calla-lilies-03f2f559.png",
+      "output": "assets/images/refined/calla-lilies-03f2f559-2x.webp",
+      "width": 256,
+      "height": 332,
+      "quality": 94,
+      "originalBytes": 12594,
+      "bytes": 16382
+    },
+    {
+      "source": "assets/images/invitation/hanging-amaranthus-062717a4.png",
+      "output": "assets/images/refined/hanging-amaranthus-062717a4-2x.webp",
+      "width": 370,
+      "height": 454,
+      "quality": 90,
+      "originalBytes": 12504,
+      "bytes": 20996
+    },
+    {
+      "source": "assets/images/invitation/bouquet-ee7bd945.png",
+      "output": "assets/images/refined/bouquet-ee7bd945-2x.webp",
+      "width": 298,
+      "height": 228,
+      "quality": 94,
+      "originalBytes": 27638,
+      "bytes": 38670
+    },
+    {
+      "source": "assets/images/celebration/top-right-floral-corner-b389ef0e.png",
+      "output": "assets/images/refined/top-right-floral-corner-b389ef0e-2x.webp",
+      "width": 424,
+      "height": 616,
+      "quality": 94,
+      "originalBytes": 68362,
+      "bytes": 108602
+    },
+    {
+      "source": "assets/images/celebration/left-floral-corner-0f9cb62d.png",
+      "output": "assets/images/refined/left-floral-corner-0f9cb62d-2x.webp",
+      "width": 284,
+      "height": 378,
+      "quality": 90,
+      "originalBytes": 31410,
+      "bytes": 52208
+    },
+    {
+      "source": "assets/images/celebration/left-floral-spray-5261e0f9.png",
+      "output": "assets/images/refined/left-floral-spray-5261e0f9-2x.webp",
+      "width": 390,
+      "height": 526,
+      "quality": 94,
+      "originalBytes": 47546,
+      "bytes": 81830
+    },
+    {
+      "source": "assets/images/celebration/right-floral-spray-ede374e5.png",
+      "output": "assets/images/refined/right-floral-spray-ede374e5-2x.webp",
+      "width": 328,
+      "height": 798,
+      "quality": 94,
+      "originalBytes": 74418,
+      "bytes": 117072
+    },
+    {
+      "source": "assets/images/celebration/sleeping-child-56a36124.png",
+      "output": "assets/images/refined/sleeping-child-56a36124-2x.webp",
+      "width": 446,
+      "height": 296,
+      "quality": 94,
+      "originalBytes": 28724,
+      "bytes": 34188
+    },
+    {
+      "source": "assets/images/date/upper-left-floral-spray-e108e8c3.png",
+      "output": "assets/images/refined/upper-left-floral-spray-e108e8c3-2x.webp",
+      "width": 480,
+      "height": 680,
+      "quality": 94,
+      "originalBytes": 82686,
+      "bytes": 141234
+    },
+    {
+      "source": "assets/images/date/right-floral-corner-5ad6c714.png",
+      "output": "assets/images/refined/right-floral-corner-5ad6c714-2x.webp",
+      "width": 438,
+      "height": 514,
+      "quality": 94,
+      "originalBytes": 67888,
+      "bytes": 110914
+    },
+    {
+      "source": "assets/images/date/upper-right-floral-spray-cc07ab07.png",
+      "output": "assets/images/refined/upper-right-floral-spray-cc07ab07-2x.webp",
+      "width": 434,
+      "height": 592,
+      "quality": 94,
+      "originalBytes": 69486,
+      "bytes": 121764
+    },
+    {
+      "source": "assets/images/date/left-floral-corner-4ae63ffa.png",
+      "output": "assets/images/refined/left-floral-corner-4ae63ffa-2x.webp",
+      "width": 382,
+      "height": 744,
+      "quality": 94,
+      "originalBytes": 85398,
+      "bytes": 132902
+    },
+    {
+      "source": "assets/images/ceremony/left-floral-corner-0d804b0b.png",
+      "output": "assets/images/refined/left-floral-corner-0d804b0b-2x.webp",
+      "width": 626,
+      "height": 468,
+      "quality": 94,
+      "originalBytes": 42808,
+      "bytes": 37544
+    },
+    {
+      "source": "assets/images/ceremony/right-floral-spray-6ff9ee5a.png",
+      "output": "assets/images/refined/right-floral-spray-6ff9ee5a-2x.webp",
+      "width": 450,
+      "height": 640,
+      "quality": 94,
+      "originalBytes": 73796,
+      "bytes": 128136
+    },
+    {
+      "source": "assets/images/ceremony/lower-left-floral-spray-9e5f480b.png",
+      "output": "assets/images/refined/lower-left-floral-spray-9e5f480b-2x.webp",
+      "width": 350,
+      "height": 496,
+      "quality": 94,
+      "originalBytes": 51430,
+      "bytes": 89648
+    },
+    {
+      "source": "assets/images/ceremony/right-floral-corner-0087e704.png",
+      "output": "assets/images/refined/right-floral-corner-0087e704-2x.webp",
+      "width": 380,
+      "height": 490,
+      "quality": 94,
+      "originalBytes": 63772,
+      "bytes": 102256
+    },
+    {
+      "source": "assets/images/reception-boat/top-right-floral-corner-cea9d175.png",
+      "output": "assets/images/refined/top-right-floral-corner-cea9d175-2x.webp",
+      "width": 220,
+      "height": 474,
+      "quality": 94,
+      "originalBytes": 29892,
+      "bytes": 49898
+    },
+    {
+      "source": "assets/images/reception-boat/left-floral-border-aa4ca07b.png",
+      "output": "assets/images/refined/left-floral-border-aa4ca07b-2x.webp",
+      "width": 218,
+      "height": 1294,
+      "quality": 94,
+      "originalBytes": 104944,
+      "bytes": 163058
+    },
+    {
+      "source": "assets/images/reception-boat/nile-watercolor-59d15642.png",
+      "output": "assets/images/refined/nile-watercolor-59d15642-2x.webp",
+      "width": 1004,
+      "height": 646,
+      "quality": 94,
+      "originalBytes": 217232,
+      "bytes": 176270
+    },
+    {
+      "source": "assets/images/reception-boat/sailboat-9effaad6.png",
+      "output": "assets/images/refined/sailboat-9effaad6-2x.webp",
+      "width": 106,
+      "height": 206,
+      "quality": 94,
+      "originalBytes": 5842,
+      "bytes": 8448
+    },
+    {
+      "source": "assets/images/reception-car/upper-left-floral-spray-e71a59bf.png",
+      "output": "assets/images/refined/upper-left-floral-spray-e71a59bf-2x.webp",
+      "width": 350,
+      "height": 494,
+      "quality": 94,
+      "originalBytes": 51128,
+      "bytes": 88808
+    },
+    {
+      "source": "assets/images/reception-car/top-right-floral-corner-122ab912.png",
+      "output": "assets/images/refined/top-right-floral-corner-122ab912-2x.webp",
+      "width": 330,
+      "height": 734,
+      "quality": 94,
+      "originalBytes": 59106,
+      "bytes": 92200
+    },
+    {
+      "source": "assets/images/reception-car/right-floral-border-e2547c6b.png",
+      "output": "assets/images/refined/right-floral-border-e2547c6b-2x.webp",
+      "width": 212,
+      "height": 1330,
+      "quality": 94,
+      "originalBytes": 108880,
+      "bytes": 168898
+    },
+    {
+      "source": "assets/images/reception-car/pink-car-8eaff23b.png",
+      "output": "assets/images/refined/pink-car-8eaff23b-2x.webp",
+      "width": 350,
+      "height": 178,
+      "quality": 94,
+      "originalBytes": 16978,
+      "bytes": 18224
+    },
+    {
+      "source": "assets/images/dress-code/upper-left-floral-spray-139c92ab.png",
+      "output": "assets/images/refined/upper-left-floral-spray-139c92ab-2x.webp",
+      "width": 350,
+      "height": 496,
+      "quality": 94,
+      "originalBytes": 51480,
+      "bytes": 89636
+    },
+    {
+      "source": "assets/images/dress-code/top-right-floral-corner-0cf503bd.png",
+      "output": "assets/images/refined/top-right-floral-corner-0cf503bd-2x.webp",
+      "width": 330,
+      "height": 734,
+      "quality": 94,
+      "originalBytes": 59074,
+      "bytes": 91802
+    },
+    {
+      "source": "assets/images/dress-code/right-floral-border-620ee063.png",
+      "output": "assets/images/refined/right-floral-border-620ee063-2x.webp",
+      "width": 212,
+      "height": 1328,
+      "quality": 94,
+      "originalBytes": 109036,
+      "bytes": 168860
+    },
+    {
+      "source": "assets/images/dress-code/womens-dress-examples-85dd7a02.png",
+      "output": "assets/images/refined/womens-dress-examples-85dd7a02-2x.webp",
+      "width": 522,
+      "height": 652,
+      "quality": 94,
+      "originalBytes": 145630,
+      "bytes": 132118
+    },
+    {
+      "source": "assets/images/dress-code/mens-suit-examples-d90bd018.png",
+      "output": "assets/images/refined/mens-suit-examples-d90bd018-2x.webp",
+      "width": 700,
+      "height": 232,
+      "quality": 94,
+      "originalBytes": 42306,
+      "bytes": 59702
+    },
+    {
+      "source": "assets/images/rsvp/left-floral-corner-541d4c8e.png",
+      "output": "assets/images/refined/left-floral-corner-541d4c8e-2x.webp",
+      "width": 326,
+      "height": 796,
+      "quality": 94,
+      "originalBytes": 73982,
+      "bytes": 116086
+    },
+    {
+      "source": "assets/images/rsvp/right-floral-corner-2240e715.png",
+      "output": "assets/images/refined/right-floral-corner-2240e715-2x.webp",
+      "width": 380,
+      "height": 490,
+      "quality": 94,
+      "originalBytes": 63780,
+      "bytes": 102714
+    },
+    {
+      "source": "assets/images/rsvp/upper-left-floral-spray-e00e2adc.png",
+      "output": "assets/images/refined/upper-left-floral-spray-e00e2adc-2x.webp",
+      "width": 450,
+      "height": 640,
+      "quality": 94,
+      "originalBytes": 73880,
+      "bytes": 128106
+    },
+    {
+      "source": "assets/images/rsvp/right-floral-spray-2a3e4dd0.png",
+      "output": "assets/images/refined/right-floral-spray-2a3e4dd0-2x.webp",
+      "width": 350,
+      "height": 496,
+      "quality": 94,
+      "originalBytes": 51480,
+      "bytes": 89568
+    }
+  ]
+}

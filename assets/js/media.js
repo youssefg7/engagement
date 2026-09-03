@@ -3,6 +3,10 @@
   const scenes = [...document.querySelectorAll('[data-scene]')];
   const pending = new WeakMap();
   const loadImage = async (image) => {
+    if (image.dataset.srcset) {
+      image.srcset = image.dataset.srcset;
+      delete image.dataset.srcset;
+    }
     if (image.dataset.src) {
       image.src = image.dataset.src;
       delete image.dataset.src;
@@ -11,6 +15,7 @@
       await image.decode();
     } catch {
       if (image.dataset.fallback) {
+        image.removeAttribute('srcset');
         image.src = image.dataset.fallback;
         delete image.dataset.fallback;
         await image.decode().catch(() => {});

@@ -1,6 +1,6 @@
 # Engagement Invitation Website — Implementation Reference
 
-Last updated: 2026-09-03
+Last updated: 2026-09-04
 
 **Current artwork decision (supersedes the generative experiments below):** use
 the original website images only. Do not use image generation. Non-generative,
@@ -724,3 +724,32 @@ Rollback verification: all 52 non-resized PNG delivery copies compare pixel-for-
 equal to their originals; the two intentional delivery-size exceptions remain the
 seal and envelope. Both routes passed all-nine-scene checks at 402×718, 844×390,
 and 1440×1000, with no missing images, generated-image requests, or horizontal overflow.
+
+### Code-only refinement — 2026-09-04
+
+Implemented the requested non-generative enhancement using original PNG inputs:
+43 small artwork files now have 2× Mitchell-resampled, lightly sharpened variants.
+Only RGB is sharpened; original alpha is resampled and encoded losslessly. All 43
+alpha outputs matched the same resize without sharpening byte-for-byte. There is
+no AI model, new drawing, invented detail, recoloring, or background extraction.
+
+Native-size lossless originals remain the 1× `src`/`srcset` option. The browser may
+select 2× variants for high-density screens. Offscreen variants use `data-srcset`
+and load only with the approaching scene. Image-error fallback clears `srcset`
+before restoring the original PNG. Layout coordinates, fonts and animations remain
+unchanged; GIFs, photos, paper and seals were excluded from sharpening.
+
+The selected set grows from 2,788,190 to 4,070,704 bytes only when all 2× variants
+are fetched, spread across scrolling scenes, rather than at startup. Each variant
+has a size budget. The visual gain is modest edge definition/smoother scaling,
+not recovered detail. Settings and provenance are in `scripts/refine-original-art.mjs`
+and `assets/images/refined/manifest.json`. Run
+`node scripts/link-original-art.mjs --original-only` to disable variants without
+deleting original or refined files.
+
+Checks: all nine scenes load in both languages at 1× and 3× pixel density, with no
+broken images or horizontal overflow. Fresh 1× sessions request zero refined files;
+3× sessions select all 43 as their scenes approach. Initial maps remain deferred.
+Forced refined-image failures correctly clear `srcset` and recover original PNGs.
+Landscape (844×390) and desktop (1440×1000) checks also passed in both languages:
+all nine scenes, no broken images, and no horizontal overflow.

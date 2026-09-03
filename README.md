@@ -29,13 +29,16 @@ families are self-hosted with their licenses, with no change to their type roles
 
 Only the original website artwork is used. Image generation is not permitted for
 this project. Original transparency is preserved, without CSS masks or recreated
-outlines. Lossless WebP delivery copies retain the original appearance; only the
-oversized seal and envelope are downscaled to appropriate delivery sizes.
+outlines. Native-size lossless WebP copies remain available; 43 small images also
+have code-only 2× variants with gentle sharpening for high-density displays.
+The oversized seal and envelope are downscaled to appropriate delivery sizes.
 
 Rebuild delivery copies with `node scripts/optimize-assets.mjs` (ImageMagick required),
 then run `node scripts/link-original-art.mjs` to update both routes. The originals
 also serve as image-error and JavaScript-disabled fallbacks. Future enhancements
 must use non-generative processing of the original files, not invented details.
+See `assets/images/refined/README.md` for enhancement settings, rebuilding, and the
+`--original-only` switch. Refinement improves rendering, not missing source detail.
 
 `scripts/vendor-fonts.mjs` refreshes the existing font download; it requires network
 access, but the website itself needs no build system or font CDN.
