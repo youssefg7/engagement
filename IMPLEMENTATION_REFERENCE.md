@@ -608,7 +608,7 @@ Deployment verification:
 - **RSVP privacy:** Guest data must stay outside the public repository.
 - **Spam:** A public form endpoint can attract spam; the custom form includes a honeypot, while provider-side limits and filtering should also be monitored.
 - **External maps:** Embedded maps depend on Google and may display their own language/UI depending on the guest's environment.
-- **External fonts:** Google Fonts require a network request. Self-hosting can be considered later but is not required for the simple first version.
+- **Fonts:** The same Google Fonts families and weights are now self-hosted, with licenses, to avoid the external font request chain.
 - **Historical CSS:** The source includes many override generations. Consolidate only after active behavior is identified.
 - **Asset extraction:** Do not discard a small fragment merely because of its dimensions until it is confirmed to be text or an obsolete layer.
 - **Performance:** Extracting and deduplicating assets should reduce the current 13 MB monolithic document and allow browser caching.
@@ -641,3 +641,39 @@ The project is complete when:
 - Mobile portrait, mobile landscape, tablet, and desktop layouts are usable and intentional.
 - RSVP submissions capture name, attendance, and optional message privately.
 - The site remains simple enough to edit directly through HTML, CSS, JavaScript, and organized assets.
+
+## 16. Loading and artwork refinement — 2026-09-03
+
+Implemented a performance pass without changing scene geometry, font roles,
+choreography, durations, or scene order:
+
+- Opening artwork has priority. Later images use deferred sources, warmed about
+  60% of a viewport ahead, after the opening is ready.
+- Scene entrances wait for images and transparency masks to decode (with a
+  five-second ceiling so network failure cannot hide usable copy indefinitely).
+- Maps and the RSVP paper background no longer download on initial entry.
+- 56 PNG delivery copies use lossless WebP; oversized wax-seal and envelope files
+  are resized for their display sizes. Originals remain as fallbacks. This step
+  reduced those delivery copies from 5,477,662 to 3,027,336 bytes (45%).
+- Fonts are local WOFF2 files with the same families, styles, weights, and Unicode
+  subsets. Their OFL licenses are included. No third-party font script was added.
+- 16 artwork groups have selected generative replacements, reused across matching
+  layers. The user approved small detail changes. Original alpha silhouettes keep
+  cutouts clear; see `assets/images/enhanced/manifest.json` for exact prompts and
+  mappings. Original photographs and animated GIFs are unchanged. Not every
+  decorative asset was regenerated.
+- All originals and selected generation sources are retained for editing and
+  rollback; archive size is not the same as what a visitor downloads.
+
+Verification: English and Arabic at 320×568, 402×718, 844×390, and 1440×900;
+all nine scenes entered, no broken images or horizontal document overflow, and
+all three maps received their sources on approach. Also checked JavaScript-off
+artwork, reduced-motion/direct RSVP navigation, and forced replacement-image
+failure falling back to originals. No real RSVP submission was sent in this pass.
+
+Indicative mobile Lighthouse comparison: prior public site 6,472,022 transferred
+bytes / 110 requests / FCP 5.5s / LCP 9.6s / score 58; optimized local preview
+1,888,934 bytes / 52 requests / FCP 2.4s / LCP 8.6s / score 71. Different hosting
+conditions mean this is not a controlled speed guarantee. Intentional decorative
+entrance delays still influence LCP. Asset sizes and deferred initial map loading
+are independently verified. Recheck on the deployed site and a real phone.

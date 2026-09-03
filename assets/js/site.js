@@ -10,7 +10,10 @@
   motionPreference.addEventListener?.("change", syncMotionPreference);
 
   const scenes = [...document.querySelectorAll("[data-scene]")];
-  const playScene = (scene) => scene.classList.add("play");
+  const playScene = async (scene) => {
+    await window.invitationMedia?.ready(scene);
+    scene.classList.add("play");
+  };
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
