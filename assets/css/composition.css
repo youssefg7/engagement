@@ -1,9 +1,10 @@
 /*
  * Task 11 reference-composition pass.
  *
- * Every non-form scene uses the source export's 502.1245 × 767.625 artboard.
- * Percent anchors below come from assets/images/elements.csv so decorative art,
- * live text, maps, and motion all share one predictable coordinate system.
+ * Decorative anchors come from the source export's 502.1245 × 767.625 artboard.
+ * Portrait scenes extend that composition to the small viewport height so one
+ * invitation scene fills the usable phone screen without shrinking its content.
+ * Short landscape screens retain the reference ratio and scroll vertically.
  */
 
 :root {
@@ -16,6 +17,8 @@ body {
   background: var(--page-background);
 }
 
+html { scroll-snap-type: y proximity; }
+
 .site {
   width: var(--site-width);
   max-width: none;
@@ -26,10 +29,11 @@ body {
 .scene {
   container-type: inline-size;
   width: 100%;
-  min-height: 0;
+  min-height: 100svh;
   padding: 0;
-  aspect-ratio: var(--reference-ratio);
+  aspect-ratio: auto;
   background: var(--paper);
+  scroll-snap-align: start;
 }
 
 .scene__inner,
@@ -55,16 +59,22 @@ body {
 }
 
 .section-title {
-  font-size: 12.2cqi;
+  font-size: clamp(3.2rem, 13.5cqi, 5.7rem);
   line-height: 0.9;
   white-space: nowrap;
 }
 
-.formal-copy,
+.formal-copy {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(0.82rem, 2.65cqi, 1.1rem);
+  line-height: 1.45;
+}
+
 .info-copy {
   max-width: none;
   margin: 0;
-  font-size: 2.35cqi;
+  font-size: clamp(0.78rem, 2.45cqi, 1rem);
   line-height: 1.45;
 }
 
@@ -108,11 +118,11 @@ body {
 }
 
 .opening__names { gap: 0; }
-.display-name { font-size: 12.6cqi; line-height: 0.86; }
+.display-name { font-size: clamp(3.2rem, 13.4cqi, 5.8rem); line-height: 0.86; }
 .opening__ampersand {
   margin: -1.6cqi 0 -0.5cqi;
   font-family: var(--hero-script);
-  font-size: 8.6cqi;
+  font-size: clamp(2.35rem, 9.2cqi, 4.6rem);
   line-height: 0.9;
 }
 
@@ -142,7 +152,7 @@ body {
 .invitation__closed-label {
   inset: 43% 13% auto;
   z-index: 21;
-  font-size: 10.5cqi;
+  font-size: clamp(3rem, 10.5cqi, 5.2rem);
   line-height: 0.8;
   rotate: -3deg;
   opacity: 0;
@@ -158,9 +168,9 @@ body {
 .invitation__card-lace { inset: 26.915% auto auto 8.381%; width: 64.326%; }
 
 .invitation__card {
-  inset: 35.4% auto auto 18.7%;
+  inset: 35.4% auto auto 17.5%;
   z-index: 6;
-  width: 42.8%;
+  width: 45%;
   min-height: 31%;
   padding: 3.1cqi 2.7cqi;
   display: grid;
@@ -170,8 +180,8 @@ body {
   rotate: -10.4deg;
 }
 
-.invitation__names { font-size: 4.5cqi; line-height: 0.85; }
-.invitation__details { margin-top: 1.3cqi; font-size: 1.6cqi; line-height: 1.3; }
+.invitation__names { font-size: clamp(1.3rem, 4.5cqi, 2.5rem); line-height: 0.85; }
+.invitation__details { margin-top: 1.3cqi; font-size: clamp(0.625rem, 1.8cqi, 0.78rem); line-height: 1.24; }
 .invitation__date { margin: 0.75cqi 0; font-size: 2em; }
 .invitation__lilies { inset: 47.63% auto auto 61.871%; z-index: 10; width: 25.441%; }
 .invitation__amaranthus { inset: 60.424% auto auto 55.098%; z-index: 11; width: 36.778%; }
@@ -179,7 +189,7 @@ body {
 .invitation__orange-title {
   inset: 8.5% 28% auto 20%;
   z-index: 8;
-  font-size: 8.6cqi;
+  font-size: clamp(2.5rem, 8.9cqi, 5rem);
   line-height: 0.64;
   transform: none;
   rotate: -4deg;
@@ -192,11 +202,11 @@ body {
 .celebration__floral--left { inset: 0.202% auto auto 0.531%; width: 38.815%; }
 .celebration__floral--right { inset: 47.967% auto auto 0.034%; width: 32.611%; }
 .celebration .scene__copy { inset: 11.5% 11% auto; width: 78%; }
-.celebration .section-title { font-size: 12.7cqi; }
-.celebration .formal-copy { margin-top: 6cqi; font-size: 2.45cqi; line-height: 1.35; }
+.celebration .section-title { font-size: clamp(3.2rem, 13.2cqi, 5.8rem); }
+.celebration .formal-copy { margin-top: 6cqi; font-size: clamp(0.76rem, 2.55cqi, 1.05rem); line-height: 1.4; }
 .celebration__rules {
   margin-top: 5cqi;
-  font-size: 2.15cqi;
+  font-size: clamp(0.72rem, 2.3cqi, 0.95rem);
   line-height: 1.35;
 }
 .celebration__rules li + li { margin-top: 2.6cqi; }
@@ -211,15 +221,15 @@ body {
 .date__floral--lower-left { inset: 51.536% auto auto 0; width: 38.014%; }
 .date-layout { display: block; }
 .date-scene .scene__copy { inset: 8% 20% auto; width: 60%; }
-.date-scene .section-title { font-size: 13.5cqi; }
+.date-scene .section-title { font-size: clamp(3.35rem, 14cqi, 6rem); }
 .calendar {
   position: absolute;
-  inset: 24% auto auto 20%;
+  inset: 24% auto auto 16%;
   z-index: 3;
-  width: 60%;
-  font-size: 1.65cqi;
+  width: 68%;
+  font-size: clamp(0.625rem, 1.9cqi, 0.8rem);
 }
-.calendar caption { margin-bottom: 1.7cqi; font-size: 2.5cqi; }
+.calendar caption { margin-bottom: 1.7cqi; font-size: clamp(0.8rem, 2.65cqi, 1.15rem); }
 .calendar th,
 .calendar td { height: 4.35cqi; padding: 0; }
 .calendar__day--event span { width: 4.6cqi; height: 4.6cqi; }
@@ -229,19 +239,23 @@ body {
   z-index: 3;
   width: 64%;
   text-align: center;
-  font-size: 2.35cqi;
+  font-size: clamp(0.78rem, 2.55cqi, 1.05rem);
 }
 .countdown {
   position: absolute;
-  inset: 66.5% auto auto 18%;
+  inset: 66.5% auto auto 14%;
   z-index: 3;
-  width: 64%;
+  width: 72%;
   margin: 0;
   gap: 1.2cqi;
 }
 .countdown__unit { padding: 1.1cqi 0; }
-.countdown__number { font-size: 6.8cqi; }
-.countdown__label { margin-top: 1cqi; font-size: 1.45cqi; }
+.countdown__number { font-size: clamp(2rem, 7.2cqi, 3.25rem); }
+.countdown__label {
+  margin-top: 1cqi;
+  font-size: clamp(0.625rem, 1.65cqi, 0.74rem);
+  letter-spacing: 0.04em;
+}
 .countdown__unit:not(:last-child)::after {
   inset-block-start: 1cqi;
   inset-inline-end: -1.2cqi;
@@ -251,8 +265,8 @@ body {
 /* Locations */
 .location-scene { background: var(--paper); }
 .location-scene .scene__copy { width: 76%; text-align: center; }
-.location-scene .formal-copy { font-size: 2.2cqi; }
-.location-scene .info-copy { font-size: 2.05cqi; }
+.location-scene .formal-copy { font-size: clamp(0.82rem, 2.5cqi, 1.05rem); }
+.location-scene .info-copy { font-size: clamp(0.78rem, 2.35cqi, 0.95rem); }
 .location-scene__art { z-index: 3; }
 .map-frame { width: 100%; height: 100%; margin: 0; background: var(--cream); }
 
@@ -274,7 +288,7 @@ body {
 .boat-scene > .floral--top-right { inset: 0 3.257% auto auto; width: 21.861%; }
 .boat-scene__border { inset: 0 auto auto 0; width: 21.609%; }
 .boat-scene .scene__copy { inset: 3.2% 12% auto; }
-.boat-scene .section-title { font-size: 11.6cqi; }
+.boat-scene .section-title { font-size: clamp(3.15rem, 12.5cqi, 5.4rem); }
 .boat-scene .scene__copy .formal-copy { margin-top: 1.2cqi; }
 .boat-scene .location-scene__art { inset: 20.05% auto auto 19.72%; width: 60.76%; height: 34%; }
 .location-scene__directions {
@@ -291,7 +305,7 @@ body {
 .car-scene > .floral--top-right { inset: 51.301% 0.388% auto auto; width: 32.844%; }
 .car-scene__border { inset: 0.58% auto auto 0.068%; width: 21.031%; }
 .car-scene .scene__copy { inset: 4.6% 12% auto; }
-.car-scene .section-title { font-size: 11.6cqi; }
+.car-scene .section-title { font-size: clamp(3.15rem, 12.5cqi, 5.4rem); }
 .car-scene .scene__copy .formal-copy { margin-top: 1.2cqi; }
 .car-scene .location-scene__art { inset: 25.25% auto auto 19.72%; width: 62.55%; height: 30.85%; }
 .car-scene .location-scene__directions { inset-block-start: 59.5%; }
@@ -312,12 +326,12 @@ body {
 .dress-code > .floral--top-right { inset: 51.301% 0.388% auto auto; width: 32.844%; }
 .dress-code__border { inset: 0.619% auto auto 0.068%; width: 21.031%; }
 .dress-code .scene__copy { inset: 5.2% 14% auto; width: 72%; }
-.dress-code .section-title { font-size: 12.2cqi; }
+.dress-code .section-title { font-size: clamp(3.2rem, 13cqi, 5.6rem); }
 .dress-code__groups { position: absolute; inset: 0; display: block; }
 .dress-code__group { position: absolute; margin: 0; text-align: center; }
 .dress-code__group:first-child { inset: 18% auto auto 21%; width: 60%; }
 .dress-code__group:last-child { inset: 66.5% auto auto 16%; width: 72%; }
-.dress-code__group h3 { margin: 0 0 1.2cqi; font-size: 2cqi; }
+.dress-code__group h3 { margin: 0 0 1.2cqi; font-size: clamp(0.75rem, 2.2cqi, 0.95rem); }
 .dress-code__group img { width: 100%; max-height: none; margin: 0; object-fit: contain; }
 .dress-code__group:first-child img { width: 86.6%; margin-inline: auto; }
 .dress-code__group:last-child img { width: 96.8%; margin-inline: auto; }
@@ -337,7 +351,7 @@ body {
   position: relative;
   inset: auto;
   z-index: 3;
-  width: 79%;
+  width: 86%;
   margin: 14% auto 12%;
   padding: 8cqi 7cqi 7cqi;
   display: block;
@@ -361,21 +375,21 @@ body {
 /* Arabic type scales retain the same visual hierarchy without squeezing letters. */
 html[lang="ar"] .opening__strapline text { font-size: 14px; }
 html[lang="ar"] .section-title { color: var(--ink); }
-html[lang="ar"] .display-name { font-size: 11.8cqi; line-height: 1.05; }
-html[lang="ar"] .opening__ampersand { margin: -1cqi 0; font-size: 7.5cqi; }
-html[lang="ar"] .section-title { font-size: 10.5cqi; line-height: 1.15; }
-html[lang="ar"] .formal-copy { font-size: 2.6cqi; line-height: 1.55; }
-html[lang="ar"] .info-copy { font-size: 2.4cqi; line-height: 1.55; }
-html[lang="ar"] .invitation__orange-title { font-size: 7.4cqi; line-height: 1; }
-html[lang="ar"] .invitation__names { font-size: 3.9cqi; line-height: 1.1; }
-html[lang="ar"] .invitation__details { font-size: 1.75cqi; line-height: 1.35; }
-html[lang="ar"] .invitation__closed-label { font-size: 8.5cqi; }
-html[lang="ar"] .celebration__rules { font-size: 2.35cqi; line-height: 1.55; }
-html[lang="ar"] .calendar { font-size: 1.8cqi; }
-html[lang="ar"] .calendar caption { font-size: 2.65cqi; }
-html[lang="ar"] .countdown__number { font-size: 5.8cqi; }
-html[lang="ar"] .countdown__label { font-size: 1.65cqi; }
-html[lang="ar"] .dress-code__group h3 { font-size: 2.35cqi; }
+html[lang="ar"] .display-name { font-size: clamp(3rem, 12.5cqi, 5.5rem); line-height: 1.05; }
+html[lang="ar"] .opening__ampersand { margin: -1cqi 0; font-size: clamp(2.1rem, 8cqi, 4rem); }
+html[lang="ar"] .section-title { font-size: clamp(2.9rem, 11.5cqi, 5rem); line-height: 1.15; }
+html[lang="ar"] .formal-copy { font-size: clamp(0.85rem, 2.8cqi, 1.2rem); line-height: 1.55; }
+html[lang="ar"] .info-copy { font-size: clamp(0.8rem, 2.6cqi, 1.1rem); line-height: 1.55; }
+html[lang="ar"] .invitation__orange-title { font-size: clamp(2.2rem, 7.8cqi, 4.4rem); line-height: 1; }
+html[lang="ar"] .invitation__names { font-size: clamp(1.2rem, 4.15cqi, 2.2rem); line-height: 1.1; }
+html[lang="ar"] .invitation__details { font-size: clamp(0.625rem, 1.9cqi, 0.82rem); line-height: 1.32; }
+html[lang="ar"] .invitation__closed-label { font-size: clamp(2.5rem, 8.8cqi, 4.7rem); }
+html[lang="ar"] .celebration__rules { font-size: clamp(0.78rem, 2.55cqi, 1rem); line-height: 1.55; }
+html[lang="ar"] .calendar { font-size: clamp(0.625rem, 2cqi, 0.82rem); }
+html[lang="ar"] .calendar caption { font-size: clamp(0.86rem, 2.8cqi, 1.2rem); }
+html[lang="ar"] .countdown__number { font-size: clamp(1.85rem, 6.2cqi, 3rem); }
+html[lang="ar"] .countdown__label { font-size: clamp(0.625rem, 1.8cqi, 0.78rem); }
+html[lang="ar"] .dress-code__group h3 { font-size: clamp(0.8rem, 2.5cqi, 1.05rem); }
 html[lang="ar"] .rsvp-title { font-size: 8cqi; }
 html[lang="ar"] .rsvp-note { font-size: 5cqi; }
 html[lang="ar"] .rsvp-form,
@@ -440,7 +454,7 @@ html[lang="ar"] .rsvp-form legend { font-size: max(0.78rem, 2.35cqi); }
 @media (min-width: 44rem) {
   .scene { padding: 0; }
   .scene__inner { display: block; max-width: none; }
-  .rsvp__paper { display: block; width: 79%; padding: 8cqi 7cqi 7cqi; text-align: center; }
+  .rsvp__paper { display: block; width: 86%; padding: 8cqi 7cqi 7cqi; text-align: center; }
   .rsvp__paper > :not(.rsvp-form),
   .rsvp__paper .rsvp-form { grid-column: auto; grid-row: auto; width: auto; margin-inline: auto; text-align: inherit; }
   .rsvp__paper .rsvp-form { margin-top: 5cqi; }
@@ -453,6 +467,10 @@ html[lang="ar"] .rsvp-form legend { font-size: max(0.78rem, 2.35cqi); }
 @media (orientation: landscape) and (max-height: 40rem) {
   :root { --site-width: min(100vw, 34rem); }
   .site { box-shadow: none; }
+  .scene:not(.rsvp) {
+    min-height: 0;
+    aspect-ratio: var(--reference-ratio);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
