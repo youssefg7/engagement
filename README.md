@@ -27,11 +27,15 @@ Opening artwork loads first; later scenes and maps load as
 they approach the viewport. Original animation timings are retained. All font
 families are self-hosted with their licenses, with no change to their type roles.
 
-Original image files are preserved. Browser delivery copies can be rebuilt with
-`node scripts/optimize-assets.mjs` (requires ImageMagick). See
-`assets/images/enhanced/README.md` for the regenerated artwork and its prompts.
-The originals also serve as image-error and JavaScript-disabled fallbacks.
-Regenerated decorative images contain embedded transparency; no CSS mask is needed.
+Only the original website artwork is used. Image generation is not permitted for
+this project. Original transparency is preserved, without CSS masks or recreated
+outlines. Lossless WebP delivery copies retain the original appearance; only the
+oversized seal and envelope are downscaled to appropriate delivery sizes.
+
+Rebuild delivery copies with `node scripts/optimize-assets.mjs` (ImageMagick required),
+then run `node scripts/link-original-art.mjs` to update both routes. The originals
+also serve as image-error and JavaScript-disabled fallbacks. Future enhancements
+must use non-generative processing of the original files, not invented details.
 
 `scripts/vendor-fonts.mjs` refreshes the existing font download; it requires network
 access, but the website itself needs no build system or font CDN.

@@ -11,7 +11,6 @@
       await image.decode();
     } catch {
       if (image.dataset.fallback) {
-        image.classList.remove('restored-art');
         image.src = image.dataset.fallback;
         delete image.dataset.fallback;
         await image.decode().catch(() => {});

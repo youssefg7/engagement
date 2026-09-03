@@ -1,6 +1,10 @@
 # Engagement Invitation Website — Implementation Reference
 
-Last updated: 2026-09-01
+Last updated: 2026-09-03
+
+**Current artwork decision (supersedes the generative experiments below):** use
+the original website images only. Do not use image generation. Non-generative,
+code-based processing is allowed, with original content and transparency preserved.
 
 This document is the durable reference for the engagement invitation website implementation. Use it to keep the visual design, responsive behavior, bilingual routes, RSVP flow, animation behavior, and deployment setup consistent across separate implementation steps.
 
@@ -701,3 +705,22 @@ were no longer identical. The couple approved standard image processing to fix i
   inspection verifies that white shirts remain intact while background is clear.
 - The historical source images and legacy exports remain available for rollback.
   Animation CSS, fonts, scene order, and layout coordinates are unchanged.
+
+### Rollback to original artwork — current decision
+
+The couple rejected the appearance of generated artwork. Both routes now use only
+original assets, delivered through the existing lossless WebP optimization pipeline.
+All generated replacements, their masks/exports, and the scripts that linked them
+were removed from the active project; they remain recoverable in Git history.
+The unchanged original images remain the visual source of truth.
+
+Local fonts, image decoding before entrances, deferred images/maps, transparency,
+RSVP, layouts, and animation choreography are retained. No sharpening, upscaling,
+or synthesized detail is applied in this rollback. Tiny source images retain their
+original resolution limits. Future enhancements must be code-based, non-generative,
+and preserve the original content; never reintroduce the generated alternatives.
+
+Rollback verification: all 52 non-resized PNG delivery copies compare pixel-for-pixel
+equal to their originals; the two intentional delivery-size exceptions remain the
+seal and envelope. Both routes passed all-nine-scene checks at 402×718, 844×390,
+and 1440×1000, with no missing images, generated-image requests, or horizontal overflow.
