@@ -1,4 +1,4 @@
-// Export selected generated art at useful Retina dimensions, retaining source masks.
+// Export selected generated art with transparency embedded in the WebP itself.
 // Run after editing assets/images/enhanced/manifest.json. Requires ImageMagick.
 import { readFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -10,11 +10,24 @@ for (const name of ['web', 'masks']) mkdirSync(resolve(directory, name), { recur
 for (const art of manifest) {
   const original = resolve(root, art.source);
   const [width, height] = execFileSync('magick', ['identify', '-format', '%w %h', original], { encoding: 'utf8' }).split(' ').map(Number);
-  const scale = Math.min(3, 2048 / Math.max(width, height));
+  const scale = Math.min(art.deliveryScale || 3, (art.maxEdge || 2048) / Math.max(width, height));
   const size = `${Math.round(width * scale)}x${Math.round(height * scale)}!`;
   const trim = art.trim ? ['-fuzz', '8%', '-trim', '+repage'] : [];
-  execFileSync('magick', [resolve(directory, art.generated), ...trim, '-resize', size, '-quality', '88', resolve(directory, `web/${art.key}.webp`)]);
-  // A compact black RGBA mask keeps the exact original cutout, including holes.
-  execFileSync('magick', [original, '-channel', 'RGB', '-evaluate', 'set', '0', '+channel', '-define', 'webp:lossless=true', resolve(directory, `masks/${art.key}.webp`)]);
+  const generated = resolve(directory, art.generated);
+  let args = [generated, ...trim];
+  if (art.alpha === 'extract') {
+    // Remove only white connected to the canvas exterior, preserving white
+    // shirts/petals inside the artwork. Work before resizing for clean edges.
+    args.push('-bordercolor', 'white', '-border', '1', '-alpha', 'set', '-fuzz', `${art.fuzz || 7}%`, '-fill', 'none', '-draw', 'color 0,0 floodfill', '-shave', '1x1');
+    // Optional interior background gaps, in selected source PNG pixel coordinates.
+    for (const [x, y] of art.backgroundSeeds || []) args.push('-draw', `color ${x},${y} floodfill`);
+  }
+  args.push('-resize', size);
+  if (!art.alpha || art.alpha === 'source') {
+    args.push('(', original, '-alpha', 'extract', '-resize', size, ')', '-alpha', 'off', '-compose', 'CopyOpacity', '-composite');
+  }
+  execFileSync('magick', [...args, '-quality', '90', resolve(directory, `web/${art.key}-alpha.webp`)]);
+  const opaque = execFileSync('magick', ['identify', '-format', '%[opaque]', resolve(directory, `web/${art.key}-alpha.webp`)], {encoding:'utf8'}).trim();
+  if (opaque === 'True') throw new Error(`${art.key} must have real transparency`);
 }
-console.log(`Built ${manifest.length} enhanced artwork exports and original-silhouette masks.`);
+console.log(`Built and checked ${manifest.length} transparent WebP exports.`);

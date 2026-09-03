@@ -2,37 +2,16 @@
   document.documentElement.dataset.js = 'enabled';
   const scenes = [...document.querySelectorAll('[data-scene]')];
   const pending = new WeakMap();
-  const masks = new Map();
-
-  const prepareMask = (url) => {
-    if (!url) return Promise.resolve();
-    if (!masks.has(url)) {
-      const mask = new Image();
-      mask.src = url;
-      masks.set(url, mask.decode());
-    }
-    return masks.get(url);
-  };
-
   const loadImage = async (image) => {
-    const maskUrl = image.dataset.mask || image.style.maskImage.match(/url\(["']?([^"')]+)["']?\)/)?.[1];
-    if (image.dataset.mask) {
-      image.style.maskImage = `url("${image.dataset.mask}")`;
-      image.style.webkitMaskImage = `url("${image.dataset.mask}")`;
-      delete image.dataset.mask;
-    }
     if (image.dataset.src) {
       image.src = image.dataset.src;
       delete image.dataset.src;
     }
     try {
-      // CSS masks must be ready too, or a decoded picture can still be invisible.
-      await Promise.all([image.decode(), prepareMask(maskUrl)]);
+      await image.decode();
     } catch {
       if (image.dataset.fallback) {
         image.classList.remove('restored-art');
-        image.style.removeProperty('mask-image');
-        image.style.removeProperty('-webkit-mask-image');
         image.src = image.dataset.fallback;
         delete image.dataset.fallback;
         await image.decode().catch(() => {});

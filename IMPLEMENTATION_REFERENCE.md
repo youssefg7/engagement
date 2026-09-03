@@ -677,3 +677,27 @@ bytes / 110 requests / FCP 5.5s / LCP 9.6s / score 58; optimized local preview
 conditions mean this is not a controlled speed guarantee. Intentional decorative
 entrance delays still influence LCP. Asset sizes and deferred initial map loading
 are independently verified. Recheck on the deployed site and a real phone.
+
+### Follow-up: embedded transparency and floral clarity
+
+The screenshot exposed a real integration defect: classless dress-code images did
+not receive their CSS masks, so their white canvases obscured the floral artwork.
+Applying the old masks also clipped the regenerated figures because the outlines
+were no longer identical. The couple approved standard image processing to fix it.
+
+- All 18 selected regenerated artwork groups now export actual transparent
+  `*-alpha.webp` files. No CSS mask or separate mask request is required.
+- Clothing and regenerated florals use high-resolution background extraction;
+  native generated alpha is preserved where available. Sensitive soft-edged
+  artwork retains the original alpha, baked into the image. Original photo and
+  paper backgrounds remain intentional, not removed indiscriminately.
+- The still-original 106px-wide dress-code border and 165px-wide corner were
+  regenerated; their exports are now 424×2656 and 825×1835 respectively. These
+  assets are also shared by the car-reception scene. The men's and women's
+  delivery images are now 1750×580 and 1305×1630.
+- Export builds verify real transparency. High-density mobile (402×718 at 3×)
+  and desktop (1440×1000 at 2×) checks cover both languages, with no CSS masks,
+  missing dress-code images, or horizontal overflow. A contrasting-background
+  inspection verifies that white shirts remain intact while background is clear.
+- The historical source images and legacy exports remain available for rollback.
+  Animation CSS, fonts, scene order, and layout coordinates are unchanged.

@@ -5,7 +5,9 @@
     "ratio": "432:146",
     "prompt": "Faithful high-resolution restoration of the original floral garland; same composition, crop, palette and watercolor style; pure white background, no checkerboard; original alpha reapplied by CSS.",
     "trim": false,
-    "generated": "source/top-floral-garland.png"
+    "generated": "source/top-floral-garland.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "opening-spray",
@@ -17,7 +19,9 @@
     ],
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Recreate this same watercolor floral artwork at high resolution, preserving the exact arrangement, each flower cluster position, leaf shapes, colors, crop, proportions, and original 195:262 aspect ratio. Keep the full original narrow/vertical silhouette; do not expand it into a different arrangement. Refine pixelated petals and stems into crisp delicate watercolor detail. Minor detail refinements allowed, no added or removed objects. Output roughly 4x source resolution. Use perfectly flat PURE WHITE #FFFFFF background in every originally transparent area, including fine holes. No checkerboard, no grey, no paper texture, no shadows, no text. This is a drop-in website decorative layer; original alpha silhouette will be applied by the website.",
     "trim": false,
-    "generated": "source/opening-spray.png"
+    "generated": "source/opening-spray.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "opening-border-left",
@@ -25,7 +29,9 @@
     "ratio": "109:544",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Recreate this same watercolor floral artwork at high resolution, preserving the exact arrangement, each flower cluster position, leaf shapes, colors, crop, proportions, and original 109:544 aspect ratio. Keep the full original narrow/vertical silhouette; do not expand it into a different arrangement. Refine pixelated petals and stems into crisp delicate watercolor detail. Minor detail refinements allowed, no added or removed objects. Output roughly 4x source resolution. Use perfectly flat PURE WHITE #FFFFFF background in every originally transparent area, including fine holes. No checkerboard, no grey, no paper texture, no shadows, no text. This is a drop-in website decorative layer; original alpha silhouette will be applied by the website.",
     "trim": true,
-    "generated": "source/opening-border-left.png"
+    "generated": "source/opening-border-left.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "opening-border-right",
@@ -33,7 +39,9 @@
     "ratio": "111:620",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Recreate this same watercolor floral artwork at high resolution, preserving the exact arrangement, each flower cluster position, leaf shapes, colors, crop, proportions, and original 111:620 aspect ratio. Keep the full original narrow/vertical silhouette; do not expand it into a different arrangement. Refine pixelated petals and stems into crisp delicate watercolor detail. Minor detail refinements allowed, no added or removed objects. Output roughly 4x source resolution. Use perfectly flat PURE WHITE #FFFFFF background in every originally transparent area, including fine holes. No checkerboard, no grey, no paper texture, no shadows, no text. This is a drop-in website decorative layer; original alpha silhouette will be applied by the website.",
     "trim": true,
-    "generated": "source/opening-border-right.png"
+    "generated": "source/opening-border-right.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "opening-nile",
@@ -76,7 +84,10 @@
     "ratio": "261:326",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Regenerate this same asset at 4x resolution, removing pixelation. Preserve this complete fashion collage, same number and positions of women, same poses, dresses, lengths, arrangement, pink orange yellow green blue lilac colors. Restore photographic detail, not watercolor. No extra people, no missing rows. Preserve original 261:326 canvas ratio, crop, object sizes, content and arrangement. Small detail changes acceptable, composition must remain the same. Fill the canvas to the exact original bounds, no extra margins. All originally transparent areas and gaps must be solid pure WHITE #FFFFFF, no checkerboard, no texture. The website will reapply the original silhouette. No text, no watermark or extra elements.",
     "trim": false,
-    "generated": "source/womens-dress-examples.png"
+    "generated": "source/womens-dress-examples.png",
+    "alpha": "extract",
+    "deliveryScale": 5,
+    "maxEdge": 2200
   },
   {
     "key": "mens-suit-examples",
@@ -84,7 +95,20 @@
     "ratio": "350:116",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Regenerate this same asset at 4x resolution, removing pixelation. Preserve exactly seven men standing in a single row, same poses and their same seven suit colors in the same order. Restore photographic detail, not illustration. Preserve original 350:116 canvas ratio, crop, object sizes, content and arrangement. Small detail changes acceptable, composition must remain the same. Fill the canvas to the exact original bounds, no extra margins. All originally transparent areas and gaps must be solid pure WHITE #FFFFFF, no checkerboard, no texture. The website will reapply the original silhouette. No text, no watermark or extra elements.",
     "trim": false,
-    "generated": "source/mens-suit-examples.png"
+    "generated": "source/mens-suit-examples.png",
+    "alpha": "extract",
+    "deliveryScale": 5,
+    "maxEdge": 2200,
+    "backgroundSeeds": [
+      [
+        377,
+        275
+      ],
+      [
+        1344,
+        265
+      ]
+    ]
   },
   {
     "key": "calla-lilies",
@@ -100,7 +124,9 @@
     "ratio": "185:227",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Faithfully regenerate this same watercolor artwork at 4x resolution with delicate sharper detail. Same three drooping green amaranthus tassels, exact positions, lengths and brown curved stem. Preserve existing wide white margins. Preserve original 185:227 canvas ratio, crop, object sizes, content and arrangement. Small detail changes acceptable; no new objects. All transparent areas and gaps must be solid pure WHITE #FFFFFF, no checkerboard, no texture. The website reapplies the original silhouette. No text, no watermark.",
     "trim": false,
-    "generated": "source/hanging-amaranthus.png"
+    "generated": "source/hanging-amaranthus.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "bouquet",
@@ -108,7 +134,9 @@
     "ratio": "149:114",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Faithfully regenerate this same watercolor artwork at 4x resolution with delicate sharper detail. Same compact colorful watercolor bouquet of pink coral red flowers, green leaves, yellow lemon at lower left and orange at lower right. Exact arrangement. Preserve original 149:114 canvas ratio, crop, object sizes, content and arrangement. Small detail changes acceptable; no new objects. All transparent areas and gaps must be solid pure WHITE #FFFFFF, no checkerboard, no texture. The website reapplies the original silhouette. No text, no watermark.",
     "trim": false,
-    "generated": "source/bouquet.png"
+    "generated": "source/bouquet.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "cascading-floral-corner",
@@ -120,7 +148,9 @@
     "ratio": "164:400",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Restore this exact watercolor floral corner at 4x resolution. Preserve every main flower and leaf position, the distinctive empty cutout area, colors, silhouette, edge crop, size and arrangement. Original canvas ratio 164:400. Refine pixelated edges and detail into crisp delicate watercolor. Minor detail changes accepted, NO expanded bouquet or shifted arrangement, no added elements. Keep same margins as source. Originally transparent areas must be PURE WHITE #FFFFFF including all gaps. NO checkerboard, no grey background or shadows. Website reapplies original alpha silhouette. No text/watermark.",
     "trim": false,
-    "generated": "source/cascading-floral-corner.png"
+    "generated": "source/cascading-floral-corner.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "wide-floral-spray",
@@ -132,7 +162,9 @@
     "ratio": "240:340",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Restore this exact watercolor floral corner at 4x resolution. Preserve every main flower and leaf position, the distinctive empty cutout area, colors, silhouette, edge crop, size and arrangement. Original canvas ratio 240:340. Refine pixelated edges and detail into crisp delicate watercolor. Minor detail changes accepted, NO expanded bouquet or shifted arrangement, no added elements. Keep same margins as source. Originally transparent areas must be PURE WHITE #FFFFFF including all gaps. NO checkerboard, no grey background or shadows. Website reapplies original alpha silhouette. No text/watermark.",
     "trim": false,
-    "generated": "source/wide-floral-spray.png"
+    "generated": "source/wide-floral-spray.png",
+    "alpha": "extract",
+    "fuzz": 5
   },
   {
     "key": "floral-edge",
@@ -145,6 +177,35 @@
     "ratio": "175:248",
     "prompt": "Use case: precise-object-edit. Image 1 is the exact restoration target. Restore this exact watercolor floral corner at 4x resolution. Preserve every main flower and leaf position, the distinctive empty cutout area, colors, silhouette, edge crop, size and arrangement. Original canvas ratio 175:248. Refine pixelated edges and detail into crisp delicate watercolor. Minor detail changes accepted, NO expanded bouquet or shifted arrangement, no added elements. Keep same margins as source. Originally transparent areas must be PURE WHITE #FFFFFF including all gaps. NO checkerboard, no grey background or shadows. Website reapplies original alpha silhouette. No text/watermark.",
     "trim": false,
-    "generated": "source/floral-edge.png"
+    "generated": "source/floral-edge.png",
+    "alpha": "extract",
+    "fuzz": 5
+  },
+  {
+    "key": "dress-code-corner",
+    "source": "assets/images/dress-code/top-right-floral-corner-0cf503bd.png",
+    "aliases": [
+      "assets/images/reception-car/top-right-floral-corner-122ab912.png"
+    ],
+    "ratio": "165:367",
+    "prompt": "Use case: precise-object-edit. Input image 1: exact edit target, a watercolor floral website decoration. Restore it at very high resolution with crisp watercolor petals and leaves. Preserve the same flowers, major positions, color palette, exact cropped composition, and narrow 165:367 aspect ratio. Do NOT rearrange into a new bouquet or expand sideways. Keep existing empty space and full original artwork bounds. Small botanical details can be refined. Background: genuinely transparent alpha, including small gaps between leaves. Do NOT paint a checkerboard! If transparency cannot be encoded, leave background perfectly uniform pure white #FFFFFF so the original transparency mask can be applied separately. No texture in empty areas, no grey, no shadows, no text or watermark.",
+    "generated": "source/dress-code-corner.png",
+    "alpha": "native",
+    "deliveryScale": 5,
+    "maxEdge": 2200
+  },
+  {
+    "key": "dress-code-tall-border",
+    "source": "assets/images/dress-code/right-floral-border-620ee063.png",
+    "aliases": [
+      "assets/images/reception-car/right-floral-border-e2547c6b.png"
+    ],
+    "ratio": "106:664",
+    "prompt": "Use case: precise-object-edit. Image 1 is the exact target. Faithfully redraw this SAME very tall narrow watercolor floral border, same flower positions, same big pink rose low down, same leaves and fern, small pink/orange/blue blossoms. Higher-resolution fine detailed watercolor, not blurry or pixelated. Preserve the original entire 106:664 aspect ratio and same silhouette, no extra margins or rearrangement. Background MUST be solid pure white #FFFFFF, including all gaps, NOT a checkerboard, not grey. Transparency will be extracted in a separate image-processing step. Keep the strip filling the canvas, about 600 pixels wide by 3750 pixels tall if possible. No added elements or text.",
+    "generated": "source/dress-code-tall-border.png",
+    "alpha": "extract",
+    "trim": true,
+    "deliveryScale": 4,
+    "maxEdge": 3000
   }
 ]

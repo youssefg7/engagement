@@ -52,13 +52,6 @@ body {
 
 button, input, textarea { font: inherit; }
 img { display: block; max-width: 100%; height: auto; }
-.restored-art {
-  mask-mode: alpha;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
 a { color: inherit; }
 
 .skip-link {
